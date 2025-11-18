@@ -5,7 +5,6 @@ import ClientLogos from '@/components/ClientLogos'
 import Problem from '@/components/Problem'
 import About from '@/components/About'
 import Technologies from '@/components/Technologies'
-import Stats from '@/components/Stats'
 import CaseStudies from '@/components/CaseStudies'
 import BeforeAfter from '@/components/BeforeAfter'
 import Services from '@/components/Services'
@@ -16,7 +15,6 @@ import NicheBenefits from '@/components/NicheBenefits'
 import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
 import Guarantee from '@/components/Guarantee'
-import TrustBadges from '@/components/TrustBadges'
 import ContactForm from '@/components/ContactForm'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
@@ -32,7 +30,6 @@ export default function Home() {
       <TrustBar />
       <Problem />
       <Technologies />
-      <Stats />
       <CaseStudies />
       <BeforeAfter />
       <Services />
@@ -43,7 +40,6 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <Guarantee />
-      <TrustBadges />
       <ContactForm />
       <CTA />
       <Footer />

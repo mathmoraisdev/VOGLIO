@@ -54,7 +54,7 @@ function StatItem({ end, duration = 2, prefix = '', suffix = '', label, decimals
 
 export default function Stats() {
   return (
-    <section className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="stats" className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-white" data-section-type="white">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial="hidden"
@@ -71,26 +71,27 @@ export default function Stats() {
           }}
         >
           <motion.div variants={fadeInUp} className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-              Números Que Falam Por Si
+            <h2 className="text-[40px] font-bold mb-3 sm:mb-4 text-gray-900 px-2">
+              Resultados Comprovados em{' '}
+              <span className="text-primary">Cada Projeto</span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600">
-              Resultados reais de clientes reais
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 px-2">
+              Métricas reais de melhorias e performance
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            <StatItem end={50} prefix="R$ " suffix="M+" label="Faturamento Gerado" decimals={0} />
-            <StatItem end={120} suffix="+" label="Projetos Entregues" decimals={0} />
-            <StatItem end={95} suffix="%" label="Taxa de Sucesso" decimals={0} />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+            <StatItem end={340} suffix="%" label="Aumento Médio de Conversão" decimals={0} />
+            <StatItem end={70} suffix="%" label="Redução de CAC" decimals={0} />
+            <StatItem end={450} suffix="%" label="Média de Melhoria em 90 dias" decimals={0} />
             <StatItem end={30} suffix=" dias" label="Tempo Médio de Entrega" decimals={0} />
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8">
             <StatItem end={100} suffix="+" label="Clientes Atendidos" decimals={0} />
-            <StatItem end={450} suffix="%" label="Média de Melhoria" decimals={0} />
             <StatItem end={24} suffix="h" label="Tempo de Resposta" decimals={0} />
             <StatItem end={5} suffix=" anos" label="No Mercado" decimals={0} />
+            <StatItem end={800} suffix="%" label="ROI Médio dos Projetos" decimals={0} />
           </div>
         </motion.div>
       </div>

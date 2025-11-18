@@ -2,35 +2,36 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
+import { Check, FileText, Zap, RotateCcw, Shield, Target } from 'lucide-react'
 
 const guarantees = [
   {
-    icon: '✓',
+    icon: Check,
     title: 'Consultoria 100% Gratuita',
     description: 'Primeira consulta sem custo e sem compromisso. Só contrata se fizer sentido para você.',
   },
   {
-    icon: '📋',
+    icon: FileText,
     title: 'Contrato Claro e Detalhado',
     description: 'Sem letras miúdas. Tudo documentado: escopo, prazos, entregas e investimento.',
   },
   {
-    icon: '⚡',
+    icon: Zap,
     title: 'Entregas Semanais',
     description: 'Você acompanha o progresso toda semana. Total transparência do início ao fim.',
   },
   {
-    icon: '🔄',
+    icon: RotateCcw,
     title: 'Revisões Ilimitadas',
     description: 'Ajustamos até você ficar 100% satisfeito dentro do escopo acordado.',
   },
   {
-    icon: '🛡️',
+    icon: Shield,
     title: 'Suporte Pós-Lançamento',
     description: '30 dias de suporte intensivo incluso. Você nunca fica desamparado.',
   },
   {
-    icon: '🎯',
+    icon: Target,
     title: 'Foco em Resultados',
     description: 'Não vendemos horas trabalhadas. Vendemos ROI, crescimento e sucesso do seu negócio.',
   },
@@ -72,7 +73,7 @@ export default function Guarantee() {
               className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-gray-800/50 rounded-2xl p-6 hover:border-green-500/30 transition-all duration-300"
             >
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-600/20 to-emerald-600/20 border border-green-500/30 flex items-center justify-center mb-4">
-                <span className="text-2xl text-green-400">{item.icon}</span>
+                <item.icon className="w-6 h-6 text-green-400" strokeWidth={2} />
               </div>
               <h3 className="text-lg sm:text-xl font-bold mb-3 text-white">
                 {item.title}
@@ -92,7 +93,7 @@ export default function Guarantee() {
           className="text-center mt-12 md:mt-16"
         >
           <div className="inline-block bg-gradient-to-r from-green-600/10 to-emerald-600/10 border border-green-500/30 rounded-2xl px-6 sm:px-8 py-6 sm:py-8">
-            <div className="text-4xl sm:text-5xl mb-4">🛡️</div>
+            <Shield className="w-12 h-12 sm:w-16 sm:h-16 text-green-400 mx-auto mb-4" strokeWidth={1.5} />
             <h3 className="text-xl sm:text-2xl font-bold mb-3 text-white">
               Trabalhe Com Confiança Total
             </h3>

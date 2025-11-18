@@ -2,21 +2,22 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUp } from '@/lib/animations'
+import { Rocket, GraduationCap, Activity, Cloud, BarChart3, Lock, TrendingUp, Palette } from 'lucide-react'
 
 const clients = [
-  { name: 'TechFlow', logo: '🚀' },
-  { name: 'EduMaster', logo: '📚' },
-  { name: 'FitApp', logo: '💪' },
-  { name: 'CloudSync', logo: '☁️' },
-  { name: 'DataViz', logo: '📊' },
-  { name: 'SecurePay', logo: '🔒' },
-  { name: 'MarketPro', logo: '📈' },
-  { name: 'DesignLab', logo: '🎨' },
+  { name: 'TechFlow', icon: Rocket },
+  { name: 'EduMaster', icon: GraduationCap },
+  { name: 'FitApp', icon: Activity },
+  { name: 'CloudSync', icon: Cloud },
+  { name: 'DataViz', icon: BarChart3 },
+  { name: 'SecurePay', icon: Lock },
+  { name: 'MarketPro', icon: TrendingUp },
+  { name: 'DesignLab', icon: Palette },
 ]
 
 export default function ClientLogos() {
   return (
-    <section className="relative py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="client-logos" className="relative py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white" data-section-type="white">
       <div className="max-w-7xl mx-auto">
         <motion.div
           variants={fadeInUp}
@@ -26,8 +27,8 @@ export default function ClientLogos() {
           className="text-center mb-8 md:mb-12"
         >
           <p className="text-sm sm:text-base text-gray-600 mb-2">Empresas que confiam na Voglio</p>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
-            Mais de <span className="text-primary">100 empresas</span> já transformaram seus negócios
+          <h2 className="text-[20px] font-bold text-gray-900">
+            Mais de <span className="text-primary">100 empresas</span><br />já transformaram seus negócios
           </h2>
         </motion.div>
 
@@ -41,8 +42,8 @@ export default function ClientLogos() {
               transition={{ delay: index * 0.05 }}
               className="flex items-center justify-center"
             >
-              <div className="w-full aspect-square bg-gradient-to-br from-gray-100 to-gray-50 border border-gray-200 rounded-xl flex items-center justify-center text-3xl md:text-4xl hover:border-primary transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-md">
-                {client.logo}
+              <div className="w-full aspect-square bg-gradient-to-br from-gray-100 to-gray-50 border border-gray-200 rounded-xl flex items-center justify-center hover:border-primary transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-md">
+                <client.icon className="w-8 h-8 md:w-10 md:h-10 text-gray-700" strokeWidth={1.5} />
               </div>
             </motion.div>
           ))}

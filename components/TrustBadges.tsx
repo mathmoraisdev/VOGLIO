@@ -2,35 +2,36 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
+import { Lock, Shield, CheckCircle2, MessageCircle, Zap, Target } from 'lucide-react'
 
 const badges = [
   {
-    icon: '🔒',
+    icon: Lock,
     title: 'Pagamento Seguro',
     description: 'Transações protegidas e criptografadas',
   },
   {
-    icon: '🛡️',
+    icon: Shield,
     title: 'Dados Protegidos',
     description: 'LGPD compliant e segurança máxima',
   },
   {
-    icon: '✅',
+    icon: CheckCircle2,
     title: 'Satisfação Garantida',
     description: '95% dos clientes recomendam',
   },
   {
-    icon: '💬',
+    icon: MessageCircle,
     title: 'Suporte 24/7',
     description: 'Equipe disponível quando precisar',
   },
   {
-    icon: '⚡',
+    icon: Zap,
     title: 'Entrega Rápida',
     description: 'Projetos entregues no prazo',
   },
   {
-    icon: '🎯',
+    icon: Target,
     title: 'Foco em Resultados',
     description: 'ROI comprovado em cada projeto',
   },
@@ -53,7 +54,7 @@ export default function TrustBadges() {
               variants={fadeInUp}
               className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-gray-800/50 rounded-xl p-4 md:p-6 text-center hover:border-primary/30 transition-all duration-300"
             >
-              <div className="text-3xl md:text-4xl mb-3">{badge.icon}</div>
+              <badge.icon className="w-8 h-8 md:w-10 md:h-10 text-primary mx-auto mb-3" strokeWidth={1.5} />
               <h3 className="text-sm font-bold text-white mb-1">{badge.title}</h3>
               <p className="text-xs text-gray-500">{badge.description}</p>
             </motion.div>

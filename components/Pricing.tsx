@@ -3,18 +3,22 @@
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
 import Button from './ui/Button'
+import { Check, Lightbulb } from 'lucide-react'
 
 const packages = [
   {
     name: 'Starter',
     price: 'A partir de',
     amount: 'R$ 15.000',
-    description: 'Ideal para começar',
+    description: 'Ideal para começar com serviços pontuais',
+    services: ['Landing Page', 'Funil Básico'],
+    roi: 'ROI esperado: 3-5x em 6 meses',
     features: [
       'Landing page de alta conversão',
       'Funil básico de vendas',
       'Integração com WhatsApp',
       'Design responsivo',
+      'Copy otimizado',
       'Suporte por 30 dias',
       'Entrega em 30 dias',
     ],
@@ -24,11 +28,14 @@ const packages = [
     name: 'Business',
     price: 'A partir de',
     amount: 'R$ 45.000',
-    description: 'Solução completa',
+    description: 'Solução completa: sistema + funil + tráfego',
+    services: ['Sistema Web', 'Landing Pages', 'Funil Completo', 'Tráfego'],
+    roi: 'ROI esperado: 5-10x em 90 dias',
     features: [
       'Sistema web completo',
       'Funil de vendas avançado',
-      'Tráfego qualificado (3 meses)',
+      'Landing pages otimizadas',
+      'Gestão de tráfego (3 meses)',
       'Automações e IA',
       'Dashboard de resultados',
       'Suporte prioritário',
@@ -40,7 +47,9 @@ const packages = [
     name: 'Enterprise',
     price: 'Sob consulta',
     amount: 'Personalizado',
-    description: 'Para grandes negócios',
+    description: 'Para grandes negócios que precisam de tudo',
+    services: ['Sistema Customizado', 'Múltiplas Landing Pages', 'Funil Avançado', 'Tráfego Ilimitado'],
+    roi: 'ROI personalizado conforme objetivos',
     features: [
       'Solução totalmente customizada',
       'Equipe dedicada',
@@ -65,11 +74,11 @@ export default function Pricing() {
           viewport={{ once: true, margin: '-100px' }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-[40px] font-bold mb-3 sm:mb-4 px-2">
             Planos Que <span className="text-primary">Crescem</span> Com Você
           </h2>
-          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
-            Escolha o plano ideal para seu negócio. Todos incluem consultoria gratuita.
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto px-2">
+            Escolha serviços pontuais ou solução completa. Todos incluem consultoria gratuita.
           </p>
         </motion.div>
 
@@ -84,11 +93,11 @@ export default function Pricing() {
             <motion.div
               key={index}
               variants={fadeInUp}
-              className={`relative bg-gradient-to-br from-gray-900/80 to-gray-800/40 border rounded-2xl p-6 md:p-8 ${
+              className={`relative bg-gradient-to-br from-gray-900/80 to-gray-800/40 border rounded-2xl p-5 sm:p-6 md:p-8 ${
                 pkg.popular
-                  ? 'border-primary/50 shadow-lg shadow-primary/20 scale-105 md:scale-110'
+                  ? 'border-primary/50 shadow-lg shadow-primary/20 md:scale-105'
                   : 'border-gray-800/50'
-              } hover:border-primary/30 transition-all duration-300`}
+              } hover:border-primary/30 hover:shadow-lg transition-all duration-300`}
             >
               {pkg.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full">
@@ -96,22 +105,36 @@ export default function Pricing() {
                 </div>
               )}
 
-              <div className="mb-6">
-                <h3 className="text-2xl md:text-3xl font-bold mb-2">{pkg.name}</h3>
-                <p className="text-gray-400 text-sm mb-4">{pkg.description}</p>
+              <div className="mb-5 sm:mb-6">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">{pkg.name}</h3>
+                <p className="text-gray-400 text-xs sm:text-sm mb-3">{pkg.description}</p>
+                {pkg.services && (
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3">
+                    {pkg.services.map((service, idx) => (
+                      <span key={idx} className="text-[10px] sm:text-xs bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded-md">
+                        {service}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <div className="mb-2">
-                  <span className="text-sm text-gray-500">{pkg.price}</span>
+                  <span className="text-xs sm:text-sm text-gray-500">{pkg.price}</span>
                 </div>
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-2">
                   {pkg.amount}
                 </div>
+                {pkg.roi && (
+                  <div className="text-xs sm:text-sm text-green-400 font-semibold bg-green-500/10 border border-green-500/20 px-2 sm:px-3 py-1 rounded-lg inline-block">
+                    {pkg.roi}
+                  </div>
+                )}
               </div>
 
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                 {pkg.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="text-green-500 text-lg flex-shrink-0">✓</span>
-                    <span className="text-sm md:text-base text-gray-300">{feature}</span>
+                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                    <span className="text-xs sm:text-sm md:text-base text-gray-300">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -119,7 +142,7 @@ export default function Pricing() {
               <Button
                 variant={pkg.popular ? 'primary' : 'outline'}
                 size="lg"
-                className="w-full"
+                className="w-full text-sm sm:text-base py-3 sm:py-4 min-h-[44px]"
                 onClick={() => {
                   document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
                 }}
@@ -138,9 +161,12 @@ export default function Pricing() {
           className="text-center mt-12"
         >
           <div className="inline-block bg-primary/10 border border-primary/30 rounded-2xl px-6 sm:px-8 py-4 sm:py-6">
-            <p className="text-sm sm:text-base text-gray-300">
-              💡 <span className="text-white font-semibold">Não sabe qual escolher?</span> Agende uma consultoria gratuita e receba uma recomendação personalizada
-            </p>
+            <div className="flex items-center justify-center gap-2">
+              <Lightbulb className="w-5 h-5 text-primary flex-shrink-0" strokeWidth={2} />
+              <p className="text-sm sm:text-base text-gray-300">
+                <span className="text-white font-semibold">Não sabe qual escolher?</span> Agende uma consultoria gratuita e receba uma recomendação personalizada
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>

@@ -6,12 +6,16 @@ import { fadeInUp } from '@/lib/animations'
 
 const faqs = [
   {
+    question: 'Quais serviços vocês oferecem?',
+    answer: 'Oferecemos 4 serviços principais: 1) Desenvolvimento de sistemas web/apps, 2) Criação de landing pages de alta conversão, 3) Estruturação completa de funis de vendas, e 4) Gestão de tráfego qualificado (Google Ads, Facebook Ads). Você pode contratar serviços pontuais ou o pacote completo.',
+  },
+  {
     question: 'Quanto custa para desenvolver meu projeto?',
     answer: 'O investimento varia de acordo com a complexidade e escopo do projeto. Após a consultoria gratuita, apresentamos um orçamento detalhado e personalizado. Nossos projetos geralmente variam de R$ 15k a R$ 150k, com opções de parcelamento.',
   },
   {
     question: 'Quanto tempo leva para ficar pronto?',
-    answer: 'Projetos simples (landing page + funil): 30 dias. Projetos médios (sistema web completo): 45-60 dias. Projetos complexos (app + sistema + marketing): 60-90 dias. Sempre com entregas semanais para você acompanhar o progresso.',
+    answer: 'Landing page + funil básico: 30 dias. Sistema web completo: 45-60 dias. Solução completa (sistema + landing pages + funil + tráfego): 60-90 dias. Sempre com entregas semanais para você acompanhar o progresso.',
   },
   {
     question: 'Por que não contratar freelancers ou agências separadas?',
@@ -64,14 +68,14 @@ export default function FAQ() {
           viewport={{ once: true, margin: '-100px' }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-[40px] font-bold mb-3 sm:mb-4 px-2">
             Perguntas{' '}
             <span className="text-primary">
               Frequentes
             </span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-400">
-            Respondemos suas principais dúvidas
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 px-2">
+            Tire suas dúvidas sobre nossos serviços e processos
           </p>
         </motion.div>
 
@@ -83,17 +87,17 @@ export default function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-xl overflow-hidden hover:border-gray-700/50 transition-all duration-300"
+              className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-xl overflow-hidden hover:border-primary/30 transition-all duration-300"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group"
+                className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none group min-h-[44px]"
               >
-                <span className="text-base sm:text-lg font-semibold text-white pr-4 group-hover:text-primary transition-colors">
+                <span className="text-sm sm:text-base md:text-lg font-semibold text-white pr-4 group-hover:text-primary transition-colors">
                   {faq.question}
                 </span>
                 <span
-                  className={`text-2xl text-primary transition-transform duration-300 flex-shrink-0 ${
+                  className={`text-xl sm:text-2xl text-primary transition-transform duration-300 flex-shrink-0 ${
                     openIndex === index ? 'rotate-45' : ''
                   }`}
                 >
@@ -105,7 +109,7 @@ export default function FAQ() {
                   openIndex === index ? 'max-h-96' : 'max-h-0'
                 }`}
               >
-                <div className="px-6 pb-5 text-gray-400 leading-relaxed border-t border-gray-800/50 pt-4">
+                <div className="px-4 sm:px-6 pb-4 sm:pb-5 text-sm sm:text-base text-gray-400 leading-relaxed border-t border-gray-800/50 pt-3 sm:pt-4">
                   {faq.answer}
                 </div>
               </div>

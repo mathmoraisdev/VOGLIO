@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
+import { Rocket, GraduationCap, ShoppingBag } from 'lucide-react'
 
 const cases = [
   {
@@ -12,7 +13,7 @@ const cases = [
     metric: '+450%',
     metricLabel: 'ROI',
     time: '90 dias',
-    icon: '🚀',
+    icon: Rocket,
   },
   {
     client: 'Infoprodutos',
@@ -22,7 +23,7 @@ const cases = [
     metric: '9x',
     metricLabel: 'Mais Vendas',
     time: '45 dias',
-    icon: '📚',
+    icon: GraduationCap,
   },
   {
     client: 'E-commerce',
@@ -32,7 +33,7 @@ const cases = [
     metric: '-65%',
     metricLabel: 'CAC',
     time: '60 dias',
-    icon: '🛍️',
+    icon: ShoppingBag,
   },
 ]
 
@@ -68,7 +69,7 @@ export default function CaseStudies() {
               variants={fadeInUp}
               className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-2xl p-6 md:p-8 hover:border-primary/30 transition-all duration-300 group"
             >
-              <div className="text-4xl mb-4">{caseItem.icon}</div>
+              <caseItem.icon className="w-10 h-10 text-primary mb-4" strokeWidth={1.5} />
               
               <div className="mb-4">
                 <h3 className="text-xl sm:text-2xl font-bold mb-1 group-hover:text-primary transition-colors">

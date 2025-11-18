@@ -2,11 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
+import { Briefcase, ShoppingBag, GraduationCap, Handshake, Check } from 'lucide-react'
 
 const niches = [
   {
     name: 'SaaS',
-    icon: '💼',
+    icon: Briefcase,
     description: 'Sistemas que escalam e geram receita recorrente',
     benefits: [
       'Onboarding automatizado',
@@ -17,7 +18,7 @@ const niches = [
   },
   {
     name: 'E-commerce',
-    icon: '🛍️',
+    icon: ShoppingBag,
     description: 'Lojas online que convertem visitantes em clientes',
     benefits: [
       'Checkout otimizado',
@@ -28,7 +29,7 @@ const niches = [
   },
   {
     name: 'Infoprodutos',
-    icon: '📚',
+    icon: GraduationCap,
     description: 'Funis de vendas que transformam conhecimento em receita',
     benefits: [
       'Landing pages de alta conversão',
@@ -39,7 +40,7 @@ const niches = [
   },
   {
     name: 'Serviços B2B',
-    icon: '🤝',
+    icon: Handshake,
     description: 'Sistemas que qualificam leads e fecham mais vendas',
     benefits: [
       'CRM integrado',
@@ -62,7 +63,7 @@ export default function NicheBenefits() {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Soluções Para Cada <span className="text-primary">Tipo de Negócio</span>
+            Soluções Para Cada<br /><span className="text-primary">Tipo de Negócio</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
             Encontre a solução ideal para o seu nicho. Cada negócio tem necessidades únicas.
@@ -83,11 +84,11 @@ export default function NicheBenefits() {
               className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-2xl p-6 md:p-8 hover:border-primary/30 transition-all duration-300 group"
             >
               <div className="flex items-start gap-4 mb-6">
-                <div className="text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300">
-                  {niche.icon}
+                <div className="group-hover:scale-110 transition-transform duration-300">
+                  <niche.icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-[18px] font-bold mb-2 group-hover:text-primary transition-colors">
                     {niche.name}
                   </h3>
                   <p className="text-gray-400 text-sm md:text-base">{niche.description}</p>
@@ -97,7 +98,7 @@ export default function NicheBenefits() {
               <div className="space-y-3">
                 {niche.benefits.map((benefit, idx) => (
                   <div key={idx} className="flex items-center gap-3">
-                    <span className="text-green-500 text-lg flex-shrink-0">✓</span>
+                    <Check className="w-5 h-5 text-green-500 flex-shrink-0" strokeWidth={2.5} />
                     <span className="text-gray-300 text-sm md:text-base">{benefit}</span>
                   </div>
                 ))}
@@ -120,7 +121,7 @@ export default function NicheBenefits() {
             }}
             className="text-primary hover:text-primary-300 font-semibold underline transition-colors"
           >
-            Fale conosco e descubra sua solução personalizada →
+            Fale conosco e descubra<br />sua solução personalizada →
           </button>
         </motion.div>
       </div>

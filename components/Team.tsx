@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
+import { Code, TrendingUp, Palette, Briefcase } from 'lucide-react'
 
 const teamMembers = [
   {
@@ -9,28 +10,28 @@ const teamMembers = [
     role: 'Desenvolvedores Full-Stack',
     experience: '5+ anos',
     expertise: 'React, Node.js, Python',
-    avatar: '👨‍💻',
+    icon: Code,
   },
   {
     name: 'Equipe Voglio',
     role: 'Especialistas em Marketing',
     experience: '8+ anos',
     expertise: 'Performance, Tráfego, Copywriting',
-    avatar: '📈',
+    icon: TrendingUp,
   },
   {
     name: 'Equipe Voglio',
     role: 'Designers UX/UI',
     experience: '6+ anos',
     expertise: 'Design Systems, Conversão',
-    avatar: '🎨',
+    icon: Palette,
   },
   {
     name: 'Equipe Voglio',
     role: 'Especialistas em Vendas',
     experience: '10+ anos',
     expertise: 'Funis, Automações, CRM',
-    avatar: '💼',
+    icon: Briefcase,
   },
 ]
 
@@ -46,10 +47,10 @@ export default function Team() {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Os <span className="text-primary">Experts</span> Por Trás dos Resultados
+            Os <span className="text-primary">Experts</span> Por<br />Trás dos Resultados
           </h2>
           <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
-            Uma equipe multidisciplinar com anos de experiência em desenvolvimento, marketing e vendas
+            Uma equipe multidisciplinar com anos de experiência em desenvolvimento,<br />marketing e vendas
           </p>
         </motion.div>
 
@@ -66,8 +67,8 @@ export default function Team() {
               variants={fadeInUp}
               className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-2xl p-6 text-center hover:border-primary/30 transition-all duration-300 group"
             >
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-300">
-                {member.avatar}
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <member.icon className="w-10 h-10 text-primary" strokeWidth={1.5} />
               </div>
               <h3 className="text-lg font-bold text-white mb-1">{member.name}</h3>
               <p className="text-sm text-primary mb-2">{member.role}</p>

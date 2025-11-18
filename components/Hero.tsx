@@ -3,10 +3,12 @@
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeIn } from '@/lib/animations'
 import Button from './ui/Button'
+import { DollarSign, Zap, Lock, Check } from 'lucide-react'
+import ProjectSlider from './ProjectSlider'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24">
+    <section className="relative min-h-screen flex items-start justify-center overflow-x-hidden overflow-y-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-[40px]">
       {/* Video Background */}
       <video
         autoPlay
@@ -46,34 +48,17 @@ export default function Hero() {
             }} />
           </motion.div>
 
-          <div className="relative z-[4] max-w-6xl mx-auto text-center">
-        {/* Social Proof Badge */}
+          <div className="relative z-[4] max-w-6xl mx-auto text-center mt-[60px]">
         <motion.div
           variants={fadeIn}
           initial="hidden"
           animate="visible"
-          className="mb-6"
+          className="mb-4 sm:mb-6"
         >
-          <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/30 rounded-full px-4 sm:px-6 py-2 sm:py-3">
-            <span className="text-xl sm:text-2xl">💰</span>
-            <span className="text-xs sm:text-sm font-semibold text-gray-200">
-              Mais de R$ 50M gerados para nossos clientes
-            </span>
-          </div>
-        </motion.div>
-
-        <motion.div
-          variants={fadeIn}
-          initial="hidden"
-          animate="visible"
-          className="mb-4"
-        >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight px-2">
-            <span className="block mb-2">Transforme Sua Ideia em um</span>
-            <span className="block" style={{ color: '#365eff' }}>
-              Negócio Digital de 6 Dígitos
-            </span>
-            <span className="block mt-2">em 90 Dias</span>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[42px] font-bold mb-3 sm:mb-4 leading-tight px-0 sm:px-2">
+            A Única Agência Que <span style={{ color: '#365eff' }}>Cria E Divulga</span> Seu Negócio Digital.
+            <br />
+            <span style={{ color: '#365eff' }}>Tudo Junto.</span>
           </h1>
         </motion.div>
 
@@ -82,9 +67,15 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.2 }}
-          className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 md:mb-10 max-w-4xl mx-auto px-2"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-6 sm:mb-8 max-w-4xl mx-auto px-2 leading-relaxed"
         >
-          Sistema completo: desenvolvimento, funil de vendas e tráfego qualificado. <span className="text-white font-semibold">Tudo em um só lugar.</span>
+          Chega de contratar <span className="text-white font-semibold">um pra criar, outro pra divulgar</span>{' '}
+          <br className="hidden sm:block" />
+          e <span className="text-white font-semibold">nada vender</span>. Aqui é <span className="text-white font-semibold">tudo pela mesma equipe</span>{' '}
+          <br className="hidden sm:block" />
+          por isso{' '}
+          <br className="hidden sm:block" />
+          <span className="text-white font-semibold">funciona de verdade</span>.
         </motion.p>
 
         <motion.div
@@ -92,29 +83,52 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.4 }}
-          className="flex flex-col items-center gap-4"
+          className="flex flex-col items-center gap-4 mb-6"
         >
           <Button size="lg" onClick={() => {
             document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
-          }} className="w-full sm:w-auto min-w-[280px]">
-            Agendar Consultoria Gratuita
+          }} className="w-full sm:w-auto min-w-[280px] text-base sm:text-lg py-3 sm:py-4 px-6 sm:px-8">
+            Agendar Minha Consultoria Gratuita
           </Button>
           
-          {/* Trust Indicators */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-gray-400">
-            <span className="flex items-center gap-1">
-              <span className="text-yellow-500">⚡</span> Vagas limitadas
-            </span>
-            <span className="hidden sm:inline">•</span>
-            <span className="flex items-center gap-1">
-              <span className="text-green-500">🔒</span> Sem compromisso
-            </span>
-            <span className="hidden sm:inline">•</span>
-            <span className="flex items-center gap-1">
-              <span className="text-primary">✓</span> Resposta em 24h
-            </span>
+          {/* Micro-copy abaixo do botão */}
+          <div className="space-y-2 text-xs sm:text-sm text-gray-400 max-w-md">
+            <div className="flex items-center justify-center gap-2">
+              <Check className="w-4 h-4 text-green-500 flex-shrink-0" strokeWidth={2.5} />
+              <span>Consultoria estratégica de 60min <span className="text-gray-500">(valor: R$ 2.500 - grátis hoje)</span></span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <Check className="w-4 h-4 text-green-500 flex-shrink-0" strokeWidth={2.5} />
+              <span>Roadmap personalizado do seu projeto</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <Check className="w-4 h-4 text-green-500 flex-shrink-0" strokeWidth={2.5} />
+              <span>Estimativa de ROI e investimento</span>
+            </div>
+            <div className="flex items-center justify-center gap-2 mt-2">
+              <Zap className="w-4 h-4 text-yellow-500 flex-shrink-0" strokeWidth={2} />
+              <span className="text-yellow-400 font-semibold">Apenas 5 vagas disponíveis esta semana</span>
+            </div>
           </div>
         </motion.div>
+
+        {/* Tagline */}
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.6 }}
+          className="mb-8 sm:mb-12"
+        >
+          <p className="text-sm sm:text-base md:text-lg text-gray-400 font-medium">
+            Desenvolvimento • Tráfego • Conversão
+            <br />
+            <span className="text-gray-500">Separados, nada funciona. Juntos, tudo muda.</span>
+          </p>
+        </motion.div>
+
+        {/* Project Slider */}
+        <ProjectSlider />
 
         {/* Scroll indicator */}
         <motion.div

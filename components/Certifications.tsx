@@ -2,19 +2,20 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
+import { Target, Smartphone, Cloud, RefreshCw, Search, Facebook, CreditCard, ShoppingCart } from 'lucide-react'
 
 const certifications = [
-  { name: 'Google Ads Certified', icon: '🎯' },
-  { name: 'Meta Business Partner', icon: '📱' },
-  { name: 'AWS Certified', icon: '☁️' },
-  { name: 'HubSpot Partner', icon: '🔄' },
+  { name: 'Google Ads Certified', icon: Target },
+  { name: 'Meta Business Partner', icon: Smartphone },
+  { name: 'AWS Certified', icon: Cloud },
+  { name: 'HubSpot Partner', icon: RefreshCw },
 ]
 
 const partners = [
-  { name: 'Google', icon: '🔍' },
-  { name: 'Meta', icon: '📘' },
-  { name: 'Stripe', icon: '💳' },
-  { name: 'Shopify', icon: '🛒' },
+  { name: 'Google', icon: Search },
+  { name: 'Meta', icon: Facebook },
+  { name: 'Stripe', icon: CreditCard },
+  { name: 'Shopify', icon: ShoppingCart },
 ]
 
 export default function Certifications() {
@@ -58,7 +59,7 @@ export default function Certifications() {
                 variants={fadeInUp}
                 className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-gray-800/50 rounded-xl p-6 text-center hover:border-green-500/30 transition-all duration-300"
               >
-                <div className="text-4xl mb-3">{cert.icon}</div>
+                <cert.icon className="w-10 h-10 text-primary mx-auto mb-3" strokeWidth={1.5} />
                 <p className="text-sm font-semibold text-white">{cert.name}</p>
               </motion.div>
             ))}
@@ -86,7 +87,7 @@ export default function Certifications() {
                 variants={fadeInUp}
                 className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-gray-800/50 rounded-xl p-6 text-center hover:border-primary/30 transition-all duration-300"
               >
-                <div className="text-4xl mb-3">{partner.icon}</div>
+                <partner.icon className="w-10 h-10 text-primary mx-auto mb-3" strokeWidth={1.5} />
                 <p className="text-sm font-semibold text-white">{partner.name}</p>
               </motion.div>
             ))}

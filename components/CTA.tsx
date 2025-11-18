@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { fadeInUp } from '@/lib/animations'
 import Button from './ui/Button'
+import { Zap, Lock, Check } from 'lucide-react'
 
 export default function CTA() {
   return (
@@ -15,29 +16,29 @@ export default function CTA() {
           viewport={{ once: true, margin: '-100px' }}
           className="text-center"
         >
-          <div className="relative bg-primary/10 border border-primary/30 rounded-3xl p-8 md:p-12 lg:p-16 overflow-hidden">
+            <div className="relative bg-primary/10 border border-primary/30 rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 overflow-hidden">
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-primary/5 rounded-3xl blur-2xl" />
             
             <div className="relative z-10">
               {/* Urgency Badge */}
-              <div className="inline-flex items-center gap-2 bg-red-600/20 border border-red-500/30 rounded-full px-4 py-2 mb-6">
-                <span className="text-xl">⚡</span>
-                <span className="text-sm font-semibold text-red-400">
-                  Apenas 5 vagas disponíveis este mês
+              <div className="inline-flex items-center gap-2 bg-red-600/20 border border-red-500/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6">
+                <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 flex-shrink-0" strokeWidth={2} />
+                <span className="text-xs sm:text-sm font-semibold text-red-400">
+                  Vagas limitadas este mês
                 </span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 px-2 leading-tight">
-                Pronto Para Ser Nosso Próximo{' '}
+              <h2 className="text-[28px] font-bold mb-3 sm:mb-4 md:mb-6 px-2 leading-tight">
+                Pronto Para Ter Seu{' '}
                 <span className="text-primary">
-                  Case de Sucesso
+                  Sistema + Funil + Tráfego Funcionando?
                 </span>
-                ?
               </h2>
               
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 md:mb-10 max-w-3xl mx-auto px-2">
-                Agende sua consultoria estratégica <span className="text-white font-semibold">100% gratuita</span> agora.{' '}
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto px-2 leading-relaxed">
+                Agende sua consultoria estratégica <span className="text-white font-semibold">100% gratuita</span> e descubra 
+                como podemos desenvolver seu sistema, criar suas landing pages, estruturar seu funil e gerar tráfego qualificado.{' '}
                 <span className="text-gray-400">Sem compromisso.</span>
               </p>
 
@@ -54,24 +55,27 @@ export default function CTA() {
                     const message = encodeURIComponent('Olá! Quero agendar minha consultoria gratuita com a Voglio.')
                     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank')
                   }}
-                  className="w-full sm:w-auto min-w-[320px] text-lg py-5"
+                  className="w-full sm:w-auto min-w-[280px] sm:min-w-[320px] text-base sm:text-lg py-3 sm:py-4 md:py-5 min-h-[44px] sm:min-h-[56px]"
                 >
-                  Sim, Quero Agendar Minha Consultoria Gratuita
+                  Agendar Consultoria Gratuita
                 </Button>
               </motion.div>
 
               {/* Trust Indicators */}
-              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm text-gray-400 pt-6 border-t border-gray-800">
-                <span className="flex items-center gap-2">
-                  <span className="text-green-500 text-lg">🔒</span> Seus dados estão seguros
+              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm text-gray-400 pt-4 sm:pt-6 border-t border-gray-800">
+                <span className="flex items-center gap-1.5 sm:gap-2 min-h-[44px] px-2">
+                  <Lock className="w-4 h-4 text-green-500 flex-shrink-0" strokeWidth={2} /> 
+                  <span>Seus dados estão seguros</span>
                 </span>
                 <span className="hidden sm:inline text-gray-700">•</span>
-                <span className="flex items-center gap-2">
-                  <span className="text-primary text-lg">⚡</span> Resposta em até 24h
+                <span className="flex items-center gap-1.5 sm:gap-2 min-h-[44px] px-2">
+                  <Zap className="w-4 h-4 text-primary flex-shrink-0" strokeWidth={2} /> 
+                  <span>Resposta em até 24h</span>
                 </span>
                 <span className="hidden sm:inline text-gray-700">•</span>
-                <span className="flex items-center gap-2">
-                    <span className="text-primary text-lg">✓</span> 100% gratuito
+                <span className="flex items-center gap-1.5 sm:gap-2 min-h-[44px] px-2">
+                    <Check className="w-4 h-4 text-primary flex-shrink-0" strokeWidth={2.5} /> 
+                    <span>100% gratuito</span>
                 </span>
               </div>
 

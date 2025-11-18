@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { fadeInUp } from '@/lib/animations'
 import Button from './ui/Button'
+import { CheckCircle2 } from 'lucide-react'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -69,7 +70,7 @@ export default function ContactForm() {
           <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-2xl p-6 md:p-8 lg:p-12">
             {submitted ? (
               <div className="text-center py-12">
-                <div className="text-6xl mb-4">✅</div>
+                <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" strokeWidth={1.5} />
                 <h3 className="text-2xl font-bold mb-2 text-white">Formulário Enviado!</h3>
                 <p className="text-gray-400 mb-6">
                   Redirecionando para o WhatsApp...

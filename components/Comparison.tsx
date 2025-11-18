@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
+import { Users, Rocket, Clock, LifeBuoy, DollarSign, TrendingUp, Zap, Target, Check, X } from 'lucide-react'
 
 const comparisonData = [
   {
@@ -12,7 +13,7 @@ const comparisonData = [
     freelancersLabel: 'Apenas 1 profissional',
     agencies: false,
     agenciesLabel: 'Equipes separadas',
-    icon: '👥',
+    icon: Users,
   },
   {
     feature: 'Dev + Marketing + Vendas',
@@ -22,7 +23,7 @@ const comparisonData = [
     freelancersLabel: 'Apenas desenvolvimento',
     agencies: 'Parcial',
     agenciesLabel: 'Falta integração',
-    icon: '🚀',
+    icon: Rocket,
   },
   {
     feature: 'Tempo de Entrega',
@@ -32,7 +33,7 @@ const comparisonData = [
     freelancersLabel: 'Atrasos frequentes',
     agencies: '60-120 dias',
     agenciesLabel: 'Processo lento',
-    icon: '⏱️',
+    icon: Clock,
   },
   {
     feature: 'Suporte Pós-Lançamento',
@@ -42,7 +43,7 @@ const comparisonData = [
     freelancersLabel: 'Cobrado à parte',
     agencies: 'Cobrado à parte',
     agenciesLabel: 'Custo adicional',
-    icon: '🛟',
+    icon: LifeBuoy,
   },
   {
     feature: 'Preço Transparente',
@@ -52,7 +53,7 @@ const comparisonData = [
     freelancersLabel: 'Custos ocultos',
     agencies: 'Oculto',
     agenciesLabel: 'Sem transparência',
-    icon: '💰',
+    icon: DollarSign,
   },
   {
     feature: 'Foco em ROI',
@@ -62,7 +63,7 @@ const comparisonData = [
     freelancersLabel: 'Apenas entrega técnica',
     agencies: 'Parcial',
     agenciesLabel: 'Foco em processos',
-    icon: '📈',
+    icon: TrendingUp,
   },
   {
     feature: 'Tecnologias Modernas',
@@ -72,7 +73,7 @@ const comparisonData = [
     freelancersLabel: 'Depende do profissional',
     agencies: true,
     agenciesLabel: 'Tecnologias modernas',
-    icon: '⚡',
+    icon: Zap,
   },
   {
     feature: 'Consultoria Gratuita',
@@ -82,33 +83,33 @@ const comparisonData = [
     freelancersLabel: 'Não oferece',
     agencies: false,
     agenciesLabel: 'Cobrado separadamente',
-    icon: '🎯',
+    icon: Target,
   },
 ]
 
 function ComparisonCard({ item, index }: { item: typeof comparisonData[0], index: number }) {
   const getVoglioDisplay = () => {
     if (item.voglio === true) {
-      return { icon: '✓', text: item.voglioLabel, color: 'text-green-500' }
+      return { icon: Check, text: item.voglioLabel, color: 'text-green-500' }
     }
-    return { icon: '', text: item.voglio, color: 'text-white' }
+    return { icon: null, text: item.voglio, color: 'text-white' }
   }
 
   const getFreelancersDisplay = () => {
     if (item.freelancers === false) {
-      return { icon: '✗', text: item.freelancersLabel, color: 'text-red-500/70' }
+      return { icon: X, text: item.freelancersLabel, color: 'text-red-500/70' }
     }
-    return { icon: '', text: item.freelancers, color: 'text-gray-400' }
+    return { icon: null, text: item.freelancers, color: 'text-gray-400' }
   }
 
   const getAgenciesDisplay = () => {
     if (item.agencies === true) {
-      return { icon: '✓', text: item.agenciesLabel, color: 'text-green-500' }
+      return { icon: Check, text: item.agenciesLabel, color: 'text-green-500' }
     }
     if (item.agencies === false) {
-      return { icon: '✗', text: item.agenciesLabel, color: 'text-red-500/70' }
+      return { icon: X, text: item.agenciesLabel, color: 'text-red-500/70' }
     }
-    return { icon: '', text: item.agencies, color: 'text-gray-400' }
+    return { icon: null, text: item.agencies, color: 'text-gray-400' }
   }
 
   const voglio = getVoglioDisplay()
@@ -126,7 +127,7 @@ function ComparisonCard({ item, index }: { item: typeof comparisonData[0], index
     >
       {/* Feature Header */}
       <div className="flex items-center gap-3 mb-6">
-        <div className="text-3xl">{item.icon}</div>
+        <item.icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
         <h3 className="text-lg md:text-xl font-bold text-white flex-1">{item.feature}</h3>
       </div>
 
@@ -136,7 +137,7 @@ function ComparisonCard({ item, index }: { item: typeof comparisonData[0], index
         <div className="bg-primary/20 border border-primary/30 rounded-xl p-4 md:p-3">
           <div className="flex items-center justify-between mb-1">
             <span className="text-xs md:text-sm font-semibold text-primary uppercase tracking-wide">Voglio</span>
-            {voglio.icon && <span className={`text-xl ${voglio.color}`}>{voglio.icon}</span>}
+            {voglio.icon && <voglio.icon className={`w-5 h-5 ${voglio.color}`} strokeWidth={2.5} />}
           </div>
           <p className={`text-sm md:text-base font-medium ${voglio.color}`}>{voglio.text}</p>
         </div>
@@ -145,7 +146,7 @@ function ComparisonCard({ item, index }: { item: typeof comparisonData[0], index
         <div className="bg-gray-900/30 border border-gray-800/50 rounded-xl p-4 md:p-3">
           <div className="flex items-center justify-between mb-1">
             <span className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-wide">Freelancers</span>
-            {freelancers.icon && <span className={`text-xl ${freelancers.color}`}>{freelancers.icon}</span>}
+            {freelancers.icon && <freelancers.icon className={`w-5 h-5 ${freelancers.color}`} strokeWidth={2.5} />}
           </div>
           <p className={`text-sm md:text-base ${freelancers.color}`}>{freelancers.text}</p>
         </div>
@@ -154,7 +155,7 @@ function ComparisonCard({ item, index }: { item: typeof comparisonData[0], index
         <div className="bg-gray-900/30 border border-gray-800/50 rounded-xl p-4 md:p-3">
           <div className="flex items-center justify-between mb-1">
             <span className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-wide">Agências</span>
-            {agencies.icon && <span className={`text-xl ${agencies.color}`}>{agencies.icon}</span>}
+            {agencies.icon && <agencies.icon className={`w-5 h-5 ${agencies.color}`} strokeWidth={2.5} />}
           </div>
           <p className={`text-sm md:text-base ${agencies.color}`}>{agencies.text}</p>
         </div>

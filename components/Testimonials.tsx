@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
+import { BarChart3, User } from 'lucide-react'
 
 const testimonials = [
   {
@@ -45,7 +46,7 @@ export default function Testimonials() {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            O Que Nossos Clientes{' '}
+            O Que Nossos<br />Clientes{' '}
             <span className="text-primary">
               Dizem
             </span>
@@ -82,17 +83,18 @@ export default function Testimonials() {
 
               {/* Result Badge */}
               <div className="mb-6 pb-6 border-b border-gray-800">
-                <div className="inline-block bg-gradient-to-r from-green-600/20 to-emerald-600/20 border border-green-500/30 rounded-lg px-4 py-2">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600/20 to-emerald-600/20 border border-green-500/30 rounded-lg px-4 py-2">
+                  <BarChart3 className="w-4 h-4 text-green-400" strokeWidth={2} />
                   <p className="text-sm font-semibold text-green-400">
-                    📊 {testimonial.result}
+                    {testimonial.result}
                   </p>
                 </div>
               </div>
 
               {/* Author */}
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-2xl">
-                  {testimonial.image}
+                <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
+                  <User className="w-6 h-6 text-primary" strokeWidth={1.5} />
                 </div>
                 <div>
                   <p className="font-bold text-white">{testimonial.name}</p>

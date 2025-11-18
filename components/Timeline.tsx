@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
+import { FileText, Zap, Rocket, TrendingUp, Check, Clock } from 'lucide-react'
 
 const phases = [
   {
@@ -13,7 +14,7 @@ const phases = [
       'Estruturação do funil',
       'Wireframes e protótipos',
     ],
-    icon: '📋',
+    icon: FileText,
   },
   {
     phase: 'Semana 3-4',
@@ -24,7 +25,7 @@ const phases = [
       'Primeiras entregas visuais',
       'Ajustes e refinamentos',
     ],
-    icon: '⚡',
+    icon: Zap,
   },
   {
     phase: 'Mês 2',
@@ -35,7 +36,7 @@ const phases = [
       'Otimizações de performance',
       'Preparação para lançamento',
     ],
-    icon: '🚀',
+    icon: Rocket,
   },
   {
     phase: 'Mês 3+',
@@ -46,7 +47,7 @@ const phases = [
       'Primeiros resultados mensuráveis',
       'Otimização contínua',
     ],
-    icon: '📈',
+    icon: TrendingUp,
   },
 ]
 
@@ -85,8 +86,8 @@ export default function Timeline() {
               <div className="flex flex-col md:flex-row gap-6 bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-2xl p-6 md:p-8 hover:border-primary/30 transition-all duration-300">
                 {/* Timeline Marker */}
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center text-3xl md:text-4xl">
-                    {phase.icon}
+                  <div className="w-20 h-20 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center">
+                    <phase.icon className="w-10 h-10 text-primary" strokeWidth={1.5} />
                   </div>
                 </div>
 
@@ -104,7 +105,7 @@ export default function Timeline() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {phase.results.map((result, idx) => (
                       <div key={idx} className="flex items-start gap-2">
-                        <span className="text-green-500 text-lg flex-shrink-0 mt-0.5">✓</span>
+                        <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
                         <span className="text-gray-300 text-sm md:text-base">{result}</span>
                       </div>
                     ))}
@@ -128,9 +129,12 @@ export default function Timeline() {
           className="text-center mt-12"
         >
           <div className="inline-block bg-primary/10 border border-primary/30 rounded-2xl px-6 sm:px-8 py-4 sm:py-6">
-            <p className="text-base sm:text-lg text-gray-300">
-              ⏱️ <span className="text-white font-semibold">Tempo médio:</span> 60-90 dias do início ao lançamento
-            </p>
+            <div className="flex items-center justify-center gap-2">
+              <Clock className="w-5 h-5 text-primary" strokeWidth={2} />
+              <p className="text-base sm:text-lg text-gray-300">
+                <span className="text-white font-semibold">Tempo médio:</span> 60-90 dias do início ao lançamento
+              </p>
+            </div>
             <p className="text-sm text-gray-500 mt-2">Com entregas semanais e total transparência</p>
           </div>
         </motion.div>
