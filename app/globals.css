@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-general-sans: 'GeneralSans', system-ui, sans-serif;
+  --color-primary: #365eff;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-general-sans);
+  background-color: #000000;
+  color: #FFFFFF;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
+  padding-bottom: 60px; /* Espaço para SocialProofBar */
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1A1A1A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2A2A2A;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Primary color utilities */
+.text-primary {
+  color: #365eff !important;
+}
+
+.bg-primary {
+  background-color: #365eff !important;
+}
+
+.border-primary {
+  border-color: #365eff !important;
+}
+
+.bg-primary\/20 {
+  background-color: rgba(54, 94, 255, 0.2) !important;
+}
+
+.bg-primary\/10 {
+  background-color: rgba(54, 94, 255, 0.1) !important;
+}
+
+.bg-primary\/5 {
+  background-color: rgba(54, 94, 255, 0.05) !important;
+}
+
+.border-primary\/30 {
+  border-color: rgba(54, 94, 255, 0.3) !important;
+}
+
+.border-primary\/50 {
+  border-color: rgba(54, 94, 255, 0.5) !important;
+}
+
+.shadow-primary\/20 {
+  box-shadow: 0 10px 15px -3px rgba(54, 94, 255, 0.2), 0 4px 6px -2px rgba(54, 94, 255, 0.2) !important;
+}
+
+.shadow-primary\/40 {
+  box-shadow: 0 10px 15px -3px rgba(54, 94, 255, 0.4), 0 4px 6px -2px rgba(54, 94, 255, 0.4) !important;
+}
+
+.hover\:bg-primary-400:hover {
+  background-color: #475fff !important;
+}
+
+.hover\:text-primary:hover {
+  color: #365eff !important;
+}
+
+.hover\:border-primary:hover {
+  border-color: #365eff !important;
+}
+
+.hover\:border-primary\/30:hover {
+  border-color: rgba(54, 94, 255, 0.3) !important;
+}
+
