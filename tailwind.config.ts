@@ -13,6 +13,10 @@ const config: Config = {
         foreground: '#FFFFFF',
         secondary: '#E5E5E5',
         border: '#1A1A1A',
+        muted: {
+          DEFAULT: '#1A1A1A',
+          foreground: '#A3A3A3',
+        },
         primary: {
           DEFAULT: '#365eff',
           50: '#e8ebff',
