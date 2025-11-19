@@ -86,7 +86,7 @@ export default function Hero() {
           className="flex flex-col items-center gap-4 mb-6"
         >
           <Button size="lg" onClick={() => {
-            document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
+            window.location.href = '/quiz'
           }} className="w-full sm:w-auto min-w-[280px] text-base sm:text-lg py-3 sm:py-4 px-6 sm:px-8">
             Agendar Minha Consultoria Gratuita
           </Button>
