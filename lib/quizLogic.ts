@@ -17,6 +17,13 @@ export interface QuizData {
   }
   timeline?: string
   budget?: string
+  businessContext?: {
+    nomeEmpresa?: string
+    tipoNegocio?: string
+    tamanho?: string
+    mercado?: string
+    concorrentes?: string
+  }
   contexto?: {
     faturamento?: string
     equipe?: string

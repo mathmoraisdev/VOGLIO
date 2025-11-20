@@ -191,20 +191,41 @@ export async function generateConditionalQuestions(
 // Construir prompt para análise completa
 function buildAnalysisPrompt(quizData: QuizData): string {
   const nome = quizData.contato?.nome || 'você'
+  const nomeEmpresa = quizData.businessContext?.nomeEmpresa || ''
   const objetivo = getObjectiveLabel(quizData.objetivo)
   const diagnostico = formatDiagnostico(quizData.diagnostico)
   const desafios = quizData.desafios?.join(', ') || 'Não especificado'
   const historico = formatHistorico(quizData.historico)
   const timeline = getTimelineLabel(quizData.timeline)
   const budget = getBudgetLabel(quizData.budget)
+  
+  // Formatar contexto do negócio
+  const contextoNegocio: string[] = []
+  if (nomeEmpresa) contextoNegocio.push(`Empresa: ${nomeEmpresa}`)
+  if (quizData.businessContext?.tipoNegocio) contextoNegocio.push(`Tipo: ${quizData.businessContext.tipoNegocio}`)
+  if (quizData.businessContext?.tamanho) {
+    const tamanhoMap: Record<string, string> = {
+      'iniciante': 'Está começando',
+      'pequeno': 'Pequeno (até 5 funcionários)',
+      'medio': 'Médio (6-20 funcionários)',
+      'grande': 'Grande (20+ funcionários)',
+    }
+    contextoNegocio.push(`Tamanho: ${tamanhoMap[quizData.businessContext.tamanho] || quizData.businessContext.tamanho}`)
+  }
+  if (quizData.businessContext?.mercado) contextoNegocio.push(`Mercado: ${quizData.businessContext.mercado}`)
+  if (quizData.businessContext?.concorrentes) contextoNegocio.push(`Concorrentes: ${quizData.businessContext.concorrentes}`)
+  
+  const contextoNegocioStr = contextoNegocio.length > 0 ? contextoNegocio.join(' | ') : 'Não especificado'
 
   return `Analise o seguinte perfil de cliente e gere uma análise estratégica completa:
 
 NOME DO CLIENTE: ${nome}
+${nomeEmpresa ? `NOME DA EMPRESA: ${nomeEmpresa}` : ''}
 OBJETIVO: ${objetivo}
 DIAGNÓSTICO: ${diagnostico}
 DESAFIOS: ${desafios}
 HISTÓRICO: ${historico}
+CONTEXTO DO NEGÓCIO: ${contextoNegocioStr}
 TIMELINE: ${timeline}
 ORÇAMENTO: ${budget}
 
@@ -228,7 +249,8 @@ IMPORTANTE:
 - NÃO mencione preços, valores ou investimentos
 - NÃO use termos técnicos
 - Foque em resultados de negócio e crescimento
-- Use o nome do cliente e personalize a mensagem
+- Use o nome do cliente${nomeEmpresa ? ` e o nome da empresa (${nomeEmpresa})` : ''} para personalizar a mensagem
+- Mencione o contexto do negócio quando relevante para criar conexão
 - Crie urgência sutil para agendar reunião
 - Faça o cliente se sentir único e especial`
 }

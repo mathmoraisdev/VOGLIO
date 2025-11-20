@@ -25,8 +25,9 @@ interface ResultStepProps {
 export default function ResultStep({ quizData }: ResultStepProps) {
   const [isLoading, setIsLoading] = useState(true)
   const nome = quizData.contato?.nome?.split(' ')[0] || 'você'
+  const nomeEmpresa = quizData.businessContext?.nomeEmpresa
   const objetivo = quizData.objetivo
-  const tipoNegocio = quizData.diagnostico?.negocio
+  const tipoNegocio = quizData.diagnostico?.negocio || quizData.businessContext?.tipoNegocio
   const desafios = quizData.desafios || []
   const historico = quizData.historico
   const prazo = quizData.timeline
@@ -85,7 +86,7 @@ export default function ResultStep({ quizData }: ResultStepProps) {
         <div className="text-3xl font-bold text-white mb-2">VOGLIO</div>
         <div className="h-1 w-24 bg-[#365eff] mx-auto rounded-full mb-6" />
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-          Olá, {nome}! Sua Análise Está Pronta 🎉
+          Olá, {nome}{nomeEmpresa ? ` da ${nomeEmpresa}` : ''}! Sua Análise Está Pronta 🎉
         </h1>
       </motion.div>
 
@@ -102,6 +103,13 @@ export default function ResultStep({ quizData }: ResultStepProps) {
         </h2>
         <div className="space-y-4 text-gray-300">
           <p className="mb-4">Com base nas suas respostas:</p>
+
+          {nomeEmpresa && (
+            <div>
+              <span className="text-gray-400">✓ Empresa:</span>{' '}
+              <span className="text-white font-semibold">{nomeEmpresa}</span>
+            </div>
+          )}
 
           <div>
             <span className="text-gray-400">✓ Objetivo:</span>{' '}

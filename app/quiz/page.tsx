@@ -7,14 +7,13 @@ import ObjectiveStep from '@/components/quiz/ObjectiveStep'
 import DiagnosticStep from '@/components/quiz/DiagnosticStep'
 import ChallengeStep from '@/components/quiz/ChallengeStep'
 import HistoryStep from '@/components/quiz/HistoryStep'
-import TimelineStep from '@/components/quiz/TimelineStep'
-import BudgetStep from '@/components/quiz/BudgetStep'
+import BusinessContextStep from '@/components/quiz/BusinessContextStep'
 import ContactStep from '@/components/quiz/ContactStep'
 import LoadingStep from '@/components/quiz/LoadingStep'
 import ResultStep from '@/components/quiz/ResultStep'
 import { QuizData, saveQuizData, loadQuizData, clearQuizData } from '@/lib/quizLogic'
 
-const TOTAL_STEPS = 7 // Etapas de perguntas (sem contar welcome e loading)
+const TOTAL_STEPS = 6 // Etapas de perguntas (sem contar welcome e loading)
 
 export default function QuizPage() {
   const [currentStep, setCurrentStep] = useState<'welcome' | number | 'loading' | 'result'>('welcome')
@@ -79,17 +78,12 @@ export default function QuizPage() {
     handleNext()
   }
 
-  const handleStep5Next = (timeline: string) => {
-    updateQuizData('timeline', timeline)
+  const handleStep5Next = (businessContext: any) => {
+    updateQuizData('businessContext', businessContext)
     handleNext()
   }
 
-  const handleStep6Next = (budget: string) => {
-    updateQuizData('budget', budget)
-    handleNext()
-  }
-
-  const handleStep7Next = async (contato: any) => {
+  const handleStep6Next = async (contato: any) => {
     updateQuizData('contato', contato)
     
     // Gerar análise completa com OpenAI
@@ -193,9 +187,9 @@ export default function QuizPage() {
         return (
           <ChallengeStep
             desafios={quizData.desafios}
+            nicho={quizData.nicho}
             onNext={handleStep3Next}
             onBack={handleBack}
-            microInsights={quizData.insights?.microInsights || []}
           />
         )
       case 4:
@@ -208,25 +202,18 @@ export default function QuizPage() {
         )
       case 5:
         return (
-          <TimelineStep
-            timeline={quizData.timeline}
+          <BusinessContextStep
+            businessContext={quizData.businessContext}
+            tipoNegocioJaColetado={quizData.diagnostico?.negocio}
             onNext={handleStep5Next}
             onBack={handleBack}
           />
         )
       case 6:
         return (
-          <BudgetStep
-            budget={quizData.budget}
-            onNext={handleStep6Next}
-            onBack={handleBack}
-          />
-        )
-      case 7:
-        return (
           <ContactStep
             contato={quizData.contato}
-            onNext={handleStep7Next}
+            onNext={handleStep6Next}
             onBack={handleBack}
           />
         )

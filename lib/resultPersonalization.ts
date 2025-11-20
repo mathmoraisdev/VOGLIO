@@ -457,6 +457,41 @@ const cases: Case[] = [
   },
 ]
 
+// Formatar contexto do negócio para uso na análise
+export function formatarContextoNegocio(businessContext?: QuizData['businessContext']): string {
+  if (!businessContext) return ''
+  
+  const partes: string[] = []
+  
+  if (businessContext.nomeEmpresa) {
+    partes.push(`Empresa: ${businessContext.nomeEmpresa}`)
+  }
+  
+  if (businessContext.tipoNegocio) {
+    partes.push(`Tipo de negócio: ${businessContext.tipoNegocio}`)
+  }
+  
+  if (businessContext.tamanho) {
+    const tamanhoMap: Record<string, string> = {
+      'iniciante': 'Está começando',
+      'pequeno': 'Pequeno (até 5 funcionários)',
+      'medio': 'Médio (6-20 funcionários)',
+      'grande': 'Grande (20+ funcionários)',
+    }
+    partes.push(`Tamanho: ${tamanhoMap[businessContext.tamanho] || businessContext.tamanho}`)
+  }
+  
+  if (businessContext.mercado) {
+    partes.push(`Mercado/Segmento: ${businessContext.mercado}`)
+  }
+  
+  if (businessContext.concorrentes) {
+    partes.push(`Concorrentes mencionados: ${businessContext.concorrentes}`)
+  }
+  
+  return partes.join(' | ')
+}
+
 export function selecionarCases(quizData: QuizData): Case[] {
   const scoredCases = cases.map((c) => {
     let score = 0
