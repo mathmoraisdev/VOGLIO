@@ -8,8 +8,26 @@ export default function Header() {
   const [isOnWhiteSection, setIsOnWhiteSection] = useState(false)
   const [logoError, setLogoError] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
+  const logoRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
+    // Animate logo and button on page load
+    const logo = logoRef.current
+    const button = buttonRef.current
+    
+    if (logo) {
+      setTimeout(() => {
+        logo.style.animation = 'word-appear 0.8s ease-out forwards'
+      }, 0)
+    }
+    
+    if (button) {
+      setTimeout(() => {
+        button.style.animation = 'word-appear 0.8s ease-out forwards'
+      }, 200)
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
       
@@ -47,16 +65,15 @@ export default function Header() {
   return (
     <motion.header
       ref={headerRef}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBgClass}`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
         <div className="flex items-center justify-between">
           <motion.div
+            ref={logoRef}
             whileHover={{ scale: 1.05 }}
-            className="relative h-8 sm:h-10 w-auto flex items-center"
+            className="relative h-8 sm:h-10 w-auto flex items-center word"
+            style={{ opacity: 0 }}
           >
             {isOnWhiteSection ? (
               <>
@@ -93,15 +110,16 @@ export default function Header() {
             )}
           </motion.div>
           <motion.button
+            ref={buttonRef}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => {
               document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })
             }}
-            className={`px-4 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base font-semibold rounded-lg transition-all duration-300 ${
+            className={`px-4 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base font-semibold rounded-lg transition-all duration-300 word ${
               isOnWhiteSection ? 'text-white' : 'text-white'
             }`}
-            style={{ backgroundColor: '#365eff' }}
+            style={{ backgroundColor: '#365eff', opacity: 0 }}
           >
             Falar Agora
           </motion.button>

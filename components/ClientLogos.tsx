@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
-import { Rocket, DollarSign, TrendingUp, Heart, Code, Layout, Zap, BarChart3, Smartphone, Search, Headphones, Shield } from 'lucide-react'
+import { Rocket, DollarSign, TrendingUp, Heart, Clock, Award, Brain, Eye, Handshake } from 'lucide-react'
 import DisplayCards from '@/components/ui/display-cards'
 const results = [
   { Icon: Rocket, text: 'Lança mais rápido' },
@@ -39,50 +39,50 @@ export default function ClientLogos() {
           <DisplayCards
             cards={[
               {
-                icon: <Code className="size-5 text-primary" />,
-                title: "Código Limpo",
-                description: "Desenvolvimento profissional com tecnologias modernas e melhores práticas",
-                date: "Sempre atualizado",
+                icon: <Clock className="size-5 text-primary" />,
+                title: "Agilidade na Entrega",
+                description: "Execução Estratégica e de Alto Desempenho, trazemos processos validados que te entregam resultado rapidamente.",
+                date: "",
                 iconClassName: "text-primary",
                 titleClassName: "text-gray-900",
               },
               {
-                icon: <Smartphone className="size-5 text-primary" />,
-                title: "100% Responsivo",
-                description: "Seu site perfeito em qualquer dispositivo: mobile, tablet e desktop",
-                date: "Testado em todos",
+                icon: <Award className="size-5 text-primary" />,
+                title: "Metodologia Validada",
+                description: "Nós sabemos o que precisa ser feito. Diversos projetos validados mundo a fora nos ajudou a desenvolver o método que vai acelerar seu projeto.",
+                date: "",
                 iconClassName: "text-primary",
                 titleClassName: "text-gray-900",
               },
               {
-                icon: <Zap className="size-5 text-primary" />,
-                title: "Performance Máxima",
-                description: "Sites rápidos e otimizados que carregam em segundos e convertem mais",
-                date: "Velocidade garantida",
+                icon: <Brain className="size-5 text-primary" />,
+                title: "Sistemas Inteligentes",
+                description: "Mapeamos os processos, identifcamos necessidades e executamos de maneira integrada a Inteligência Artificial. Criamos automações avançadas para acelerar seu negócio.",
+                date: "",
                 iconClassName: "text-primary",
                 titleClassName: "text-gray-900",
               },
               {
-                icon: <Search className="size-5 text-primary" />,
-                title: "SEO Integrado",
-                description: "Otimização completa para aparecer no Google e atrair clientes",
-                date: "Visibilidade total",
+                icon: <Eye className="size-5 text-primary" />,
+                title: "Acompanhe ao Vivo",
+                description: "Tenha em tempo real, os status do seu projeto e acompanhe evoluções diárias, tendo transparência total no processo de execução e acompanhamento também pós lançamento.",
+                date: "",
                 iconClassName: "text-primary",
                 titleClassName: "text-gray-900",
               },
               {
-                icon: <Headphones className="size-5 text-primary" />,
-                title: "Suporte Completo",
-                description: "Equipe dedicada para tirar dúvidas e ajudar no que precisar",
-                date: "Sempre disponível",
+                icon: <TrendingUp className="size-5 text-primary" />,
+                title: "Pronto para a Escala",
+                description: "Sabemos o que converte e como criar a melhor experiência para seu cliente, e também preparamos a sua estrutura para a escala.",
+                date: "",
                 iconClassName: "text-primary",
                 titleClassName: "text-gray-900",
               },
               {
-                icon: <Shield className="size-5 text-primary" />,
-                title: "Segurança Total",
-                description: "Proteção completa dos dados com certificados SSL e backups regulares",
-                date: "100% seguro",
+                icon: <Handshake className="size-5 text-primary" />,
+                title: "Um Parceiro pra Você",
+                description: "Esse é o nosso diferencial, um parceiro que consegue integrar as necessidades do seu projeto em uma solução única e personalizada, trazendo praticidade, velocidade e um resultado mais eficiente.",
+                date: "",
                 iconClassName: "text-primary",
                 titleClassName: "text-gray-900",
               },
@@ -102,7 +102,7 @@ export default function ClientLogos() {
           <motion.div variants={fadeInUp}>
             <div className="text-center">
               <p className="text-xl md:text-2xl lg:text-3xl font-bold text-primary leading-tight">
-                DEV + MARKETING + VENDAS<br />na mesma equipe
+                DEV + MARKETING + CONVERSÃO<br />na mesma equipe
               </p>
             </div>
           </motion.div>

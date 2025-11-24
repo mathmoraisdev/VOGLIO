@@ -26,18 +26,18 @@ function DisplayCard({
   return (
     <div
       className={cn(
-        "flex flex-col justify-between rounded-xl border-2 border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow",
+        "flex flex-col h-full rounded-xl border-2 border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow",
         className
       )}
     >
-      <div className="flex items-center gap-3 mb-4">
-        <span className="inline-block rounded-full bg-primary/10 p-2">
+      <div className="flex items-start gap-3 mb-4 min-h-[60px]">
+        <span className="inline-block rounded-full bg-primary/10 p-2 flex-shrink-0">
           {React.cloneElement(icon as React.ReactElement, { className: `size-5 ${iconClassName}` })}
         </span>
-        <h3 className={cn("text-lg font-bold", titleClassName)}>{title}</h3>
+        <h3 className={cn("text-lg font-bold leading-tight", titleClassName)}>{title}</h3>
       </div>
-      <p className="text-gray-600 mb-4 leading-relaxed">{description}</p>
-      {date && <p className="text-sm text-gray-400">{date}</p>}
+      <p className="text-gray-600 leading-relaxed flex-grow">{description}</p>
+      {date && <p className="text-sm text-gray-400 mt-4">{date}</p>}
     </div>
   );
 }
@@ -71,7 +71,7 @@ export default function DisplayCards({ cards }: DisplayCardsProps) {
   const displayCards = cards || defaultCards;
 
   return (
-    <div className="grid grid-cols-2 gap-4 md:gap-6 w-full">
+    <div className="grid grid-cols-2 gap-4 md:gap-6 w-full items-stretch">
       {displayCards.map((cardProps, index) => (
         <DisplayCard key={index} {...cardProps} />
       ))}

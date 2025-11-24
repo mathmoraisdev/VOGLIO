@@ -39,7 +39,7 @@ export default function Problem() {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-[28px] font-bold mb-3 sm:mb-4 md:mb-6 px-2">
-            Você Está Perdendo Dinheiro <span className="text-red-400">Todos os Dias</span>
+            Você Está Perdendo Dinheiro<br /><span className="text-red-400">Todos os Dias</span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto px-2">
             Sem um sistema digital completo<br />funcionando para você 24/7

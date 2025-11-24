@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
 import Button from '@/components/ui/Button'
 import { NichoType } from '@/lib/quizLogic'
+import { CheckSquare2, Square } from 'lucide-react'
 
 interface ChallengeStepProps {
   desafios?: string[]
@@ -151,8 +152,21 @@ export default function ChallengeStep({ desafios = [], nicho, onNext, onBack }: 
                   }
                 }}
                 disabled={isDisabled}
-                className="mt-1 w-5 h-5 rounded border-gray-700 bg-gray-800 text-[#365eff] focus:ring-[#365eff] focus:ring-2 disabled:opacity-50 cursor-pointer"
+                className="hidden"
               />
+              <div className={`mt-1 flex-shrink-0 p-1 rounded transition-colors ${
+                isSelected 
+                  ? 'bg-[#365eff]/20' 
+                  : isDisabled
+                  ? 'bg-gray-800/30 opacity-50'
+                  : 'bg-gray-800/50'
+              }`}>
+                {isSelected ? (
+                  <CheckSquare2 className="w-5 h-5 text-[#365eff]" strokeWidth={2} />
+                ) : (
+                  <Square className={`w-5 h-5 ${isDisabled ? 'text-[#365eff]/30' : 'text-[#365eff]/60'}`} strokeWidth={2} />
+                )}
+              </div>
               <span className="text-sm text-gray-300 flex-1 cursor-pointer select-none">{desafio}</span>
             </motion.div>
           )

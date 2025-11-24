@@ -50,10 +50,7 @@ export default function CTA() {
                 <Button 
                   size="lg" 
                   onClick={() => {
-                    // Substitua o número abaixo pelo número real do WhatsApp da Voglio
-                    const whatsappNumber = '5511999999999' // Formato: código do país + DDD + número
-                    const message = encodeURIComponent('Olá! Quero agendar minha consultoria gratuita com a Voglio.')
-                    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank')
+                    window.location.href = '/quiz'
                   }}
                   className="w-full sm:w-auto min-w-[280px] sm:min-w-[320px] text-base sm:text-lg py-3 sm:py-4 md:py-5 min-h-[44px] sm:min-h-[56px]"
                 >

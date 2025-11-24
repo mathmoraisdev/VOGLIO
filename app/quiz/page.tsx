@@ -205,6 +205,7 @@ export default function QuizPage() {
           <BusinessContextStep
             businessContext={quizData.businessContext}
             tipoNegocioJaColetado={quizData.diagnostico?.negocio}
+            objetivo={quizData.objetivo}
             onNext={handleStep5Next}
             onBack={handleBack}
           />

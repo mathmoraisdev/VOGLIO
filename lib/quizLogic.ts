@@ -23,6 +23,7 @@ export interface QuizData {
     tamanho?: string
     mercado?: string
     concorrentes?: string
+    investimentoAnuncios?: string
   }
   contexto?: {
     faturamento?: string

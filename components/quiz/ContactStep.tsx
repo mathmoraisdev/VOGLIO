@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { fadeInUp } from '@/lib/animations'
 import Button from '@/components/ui/Button'
-import { Mail, MessageCircle, Lock } from 'lucide-react'
+import { Mail, MessageCircle, Lock, CheckSquare2, Square } from 'lucide-react'
 
 interface ContactStepProps {
   contato?: {
@@ -182,8 +182,19 @@ export default function ContactStep({ contato, onNext, onBack }: ContactStepProp
             type="checkbox"
             checked={formData.optIn}
             onChange={(e) => handleChange('optIn', e.target.checked)}
-            className="w-4 h-4 rounded border-gray-700 bg-gray-800 text-[#365eff] focus:ring-[#365eff] focus:ring-2"
+            className="hidden"
           />
+          <div className={`flex-shrink-0 p-0.5 rounded transition-colors ${
+            formData.optIn 
+              ? 'bg-[#365eff]/20' 
+              : 'bg-gray-800/50'
+          }`}>
+            {formData.optIn ? (
+              <CheckSquare2 className="w-4 h-4 text-[#365eff]" strokeWidth={2} />
+            ) : (
+              <Square className="w-4 h-4 text-[#365eff]/60" strokeWidth={2} />
+            )}
+          </div>
           <span className="text-xs text-gray-400">Quero receber conteúdos sobre crescimento digital</span>
         </label>
       </motion.div>

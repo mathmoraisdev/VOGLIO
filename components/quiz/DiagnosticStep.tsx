@@ -13,7 +13,17 @@ import {
   Search, 
   TrendingUp, 
   Rocket,
-  CheckCircle2
+  CheckCircle2,
+  Circle,
+  CircleDot,
+  GraduationCap,
+  ShoppingCart,
+  Cloud,
+  Briefcase,
+  Building,
+  Network,
+  CheckSquare2,
+  Square
 } from 'lucide-react'
 
 interface DiagnosticStepProps {
@@ -111,27 +121,41 @@ export default function DiagnosticStep({ objective, diagnostico, onNext, onBack,
           animate="visible"
           className="space-y-2 mb-5"
         >
-          {tipos.map((tipo, index) => (
-            <motion.label
-              key={tipo}
-              variants={fadeInUp}
-              className="flex items-center gap-2 p-3 rounded-lg border-2 border-gray-800 bg-gray-900/50 hover:border-gray-700 cursor-pointer transition-all"
-            >
-              <input
-                type="checkbox"
-                checked={selectedItems.includes(tipo)}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    setSelectedItems([...selectedItems, tipo])
-                  } else {
-                    setSelectedItems(selectedItems.filter((item) => item !== tipo))
-                  }
-                }}
-                className="w-5 h-5 rounded border-gray-700 bg-gray-800 text-[#365eff] focus:ring-[#365eff] focus:ring-2"
-              />
-              <span className="text-sm text-gray-300 flex-1">{tipo}</span>
-            </motion.label>
-          ))}
+          {tipos.map((tipo, index) => {
+            const isSelected = selectedItems.includes(tipo)
+            return (
+              <motion.label
+                key={tipo}
+                variants={fadeInUp}
+                className="flex items-center gap-2 p-3 rounded-lg border-2 border-gray-800 bg-gray-900/50 hover:border-gray-700 cursor-pointer transition-all"
+              >
+                <input
+                  type="checkbox"
+                  checked={isSelected}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setSelectedItems([...selectedItems, tipo])
+                    } else {
+                      setSelectedItems(selectedItems.filter((item) => item !== tipo))
+                    }
+                  }}
+                  className="hidden"
+                />
+                <div className={`flex-shrink-0 p-1 rounded transition-colors ${
+                  isSelected 
+                    ? 'bg-[#365eff]/20' 
+                    : 'bg-gray-800/50'
+                }`}>
+                  {isSelected ? (
+                    <CheckSquare2 className="w-5 h-5 text-[#365eff]" strokeWidth={2} />
+                  ) : (
+                    <Square className="w-5 h-5 text-[#365eff]/60" strokeWidth={2} />
+                  )}
+                </div>
+                <span className="text-sm text-gray-300 flex-1">{tipo}</span>
+              </motion.label>
+            )
+          })}
         </motion.div>
 
         <div className="flex justify-center mt-4">
@@ -328,12 +352,30 @@ export default function DiagnosticStep({ objective, diagnostico, onNext, onBack,
 
   // Solução Completa
   const negocios = [
-    'Infoproduto / Curso online / Mentoria',
-    'E-commerce / Loja online',
-    'SaaS / Software como serviço',
-    'Serviços B2B / Consultoria',
-    'Serviços locais (clínica, escritório, etc)',
-    'Marketplace / Plataforma',
+    { 
+      label: 'Infoproduto / Curso online / Mentoria',
+      icon: GraduationCap
+    },
+    { 
+      label: 'E-commerce / Loja online',
+      icon: ShoppingCart
+    },
+    { 
+      label: 'SaaS / Software como serviço',
+      icon: Cloud
+    },
+    { 
+      label: 'Serviços B2B / Consultoria',
+      icon: Briefcase
+    },
+    { 
+      label: 'Serviços locais (clínica, escritório, etc)',
+      icon: Building
+    },
+    { 
+      label: 'Marketplace / Plataforma',
+      icon: Network
+    },
   ]
 
   return (
@@ -358,27 +400,42 @@ export default function DiagnosticStep({ objective, diagnostico, onNext, onBack,
         animate="visible"
         className="space-y-3 mb-6"
       >
-        {negocios.map((negocio, index) => (
-          <motion.label
-            key={negocio}
-            variants={fadeInUp}
-            className={`flex items-start gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all ${
-              selectedOption === negocio
-                ? 'border-[#365eff] bg-[#365eff]/10'
-                : 'border-gray-800 bg-gray-900/50 hover:border-gray-700'
-            }`}
-          >
-            <input
-              type="radio"
-              name="negocio"
-              value={negocio}
-              checked={selectedOption === negocio}
-              onChange={(e) => setSelectedOption(e.target.value)}
-              className="mt-1 w-5 h-5 border-gray-700 bg-gray-800 text-[#365eff] focus:ring-[#365eff] focus:ring-2"
-            />
-            <span className="text-gray-300 flex-1">{negocio}</span>
-          </motion.label>
-        ))}
+        {negocios.map((negocio, index) => {
+          const isSelected = selectedOption === negocio.label
+          const Icon = negocio.icon
+          return (
+            <motion.label
+              key={negocio.label}
+              variants={fadeInUp}
+              className={`flex items-start gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all ${
+                isSelected
+                  ? 'border-[#365eff] bg-[#365eff]/10'
+                  : 'border-gray-800 bg-gray-900/50 hover:border-gray-700'
+              }`}
+            >
+              <input
+                type="radio"
+                name="negocio"
+                value={negocio.label}
+                checked={isSelected}
+                onChange={(e) => setSelectedOption(e.target.value)}
+                className="hidden"
+              />
+              <div className={`mt-1 flex-shrink-0 p-1.5 rounded-lg transition-colors ${
+                isSelected 
+                  ? 'bg-[#365eff]/20' 
+                  : 'bg-gray-800/50'
+              }`}>
+                <Icon className={`w-5 h-5 transition-colors ${
+                  isSelected 
+                    ? 'text-[#365eff]' 
+                    : 'text-[#365eff]/60'
+                }`} strokeWidth={2} />
+              </div>
+              <span className="text-gray-300 flex-1">{negocio.label}</span>
+            </motion.label>
+          )
+        })}
       </motion.div>
 
       <div className="flex justify-center">

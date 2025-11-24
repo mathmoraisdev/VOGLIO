@@ -4,6 +4,7 @@ import TrustBar from '@/components/TrustBar'
 import ClientLogos from '@/components/ClientLogos'
 import Problem from '@/components/Problem'
 import About from '@/components/About'
+import SalesExpertise from '@/components/SalesExpertise'
 import Technologies from '@/components/Technologies'
 import CaseStudies from '@/components/CaseStudies'
 import BeforeAfter from '@/components/BeforeAfter'
@@ -15,7 +16,6 @@ import NicheBenefits from '@/components/NicheBenefits'
 import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
 import Guarantee from '@/components/Guarantee'
-import ContactForm from '@/components/ContactForm'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import SocialProofBar from '@/components/SocialProofBar'
@@ -27,8 +27,8 @@ export default function Home() {
       <Hero />
       <About />
       <ClientLogos />
-      <TrustBar />
       <Problem />
+      <SalesExpertise />
       <Technologies />
       <CaseStudies />
       <BeforeAfter />
@@ -40,7 +40,6 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <Guarantee />
-      <ContactForm />
       <CTA />
       <Footer />
       <SocialProofBar />

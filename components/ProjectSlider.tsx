@@ -147,7 +147,7 @@ export default function ProjectSlider() {
   }
 
   return (
-    <div className="relative w-full mt-12 sm:mt-16 md:mt-24 z-[5] px-2 sm:px-4">
+    <div className="relative w-full mt-0 z-[5] px-2 sm:px-4">
       <div
         className="relative w-full h-[200px] sm:h-[220px] md:h-[240px]"
         style={{ perspective: '1500px', perspectiveOrigin: 'center center', overflow: 'visible' }}
