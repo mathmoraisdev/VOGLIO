@@ -85,7 +85,7 @@ export default function ResultStep({ quizData }: ResultStepProps) {
       >
         <div className="text-3xl font-bold text-white mb-2">VOGLIO</div>
         <div className="h-1 w-24 bg-[#365eff] mx-auto rounded-full mb-6" />
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[32px] font-bold text-white mb-4">
           Olá, {nome}{nomeEmpresa ? ` da ${nomeEmpresa}` : ''}! Sua Análise Está Pronta 🎉
         </h1>
       </motion.div>

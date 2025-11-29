@@ -11,10 +11,8 @@ import Services from '@/components/Services'
 import WhoWeServe from '@/components/WhoWeServe'
 import Process from '@/components/Process'
 import Team from '@/components/Team'
-import Guarantee from '@/components/Guarantee'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
-import SocialProofBar from '@/components/SocialProofBar'
 
 export default function Home() {
   return (
@@ -31,10 +29,8 @@ export default function Home() {
       <WhoWeServe />
       <Process />
       <Team />
-      <Guarantee />
       <CTA />
       <Footer />
-      <SocialProofBar />
     </main>
   )
 }

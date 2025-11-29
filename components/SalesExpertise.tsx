@@ -1,8 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { fadeInUp } from '@/lib/animations'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { 
   Globe, 
   TrendingUp, 
@@ -12,8 +10,8 @@ import {
   Sparkles
 } from 'lucide-react'
 import { useMotionValue, useSpring, useInView } from 'framer-motion'
-import { useRef } from 'react'
 import Image from 'next/image'
+import { useScrollAnimation, getStaggerDelay } from '@/hooks/useScrollAnimation'
 
 const trustItems = [
   { label: 'R$ 300M+', description: 'Faturamento Gerado', animate: true },
@@ -95,7 +93,8 @@ const benefits = [
 
 export default function SalesExpertise() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isMobile, setIsMobile] = useState(false) // Inicia como false (desktop)
+  const [isMobile, setIsMobile] = useState(false)
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>()
 
   useEffect(() => {
     const checkMobile = () => {
@@ -103,7 +102,6 @@ export default function SalesExpertise() {
       setIsMobile(isMobileView)
     }
     
-    // Verifica imediatamente
     if (typeof window !== 'undefined') {
       checkMobile()
     }
@@ -114,7 +112,6 @@ export default function SalesExpertise() {
   }, [])
 
   useEffect(() => {
-    // Calcula quantos slides são possíveis
     const cardsPerView = isMobile ? 1 : 2
     const maxIndex = Math.max(0, Math.ceil(benefits.length / cardsPerView) - 1)
     
@@ -123,33 +120,29 @@ export default function SalesExpertise() {
         if (maxIndex === 0) return 0
         return (prev + 1) % (maxIndex + 1)
       })
-    }, 4000) // Muda a cada 4 segundos
+    }, 4000)
 
     return () => clearInterval(interval)
   }, [isMobile])
 
   return (
-    <section className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/50 to-black">
+    <section 
+      ref={ref}
+      className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/50 to-black"
+    >
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="text-center mb-6 md:mb-8"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+        <div className="text-center mb-6 md:mb-8">
+          <h2 
+            className={`text-[20px] sm:text-4xl md:text-5xl lg:text-[32px] font-bold scroll-animate-title ${isVisible ? 'is-visible' : ''}`}
+          >
             Deixe com quem<br /><span className="text-primary">sabe vender</span>
           </h2>
-        </motion.div>
+        </div>
 
-        {/* TrustBar abaixo do título - versão adaptada para fundo escuro */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="mb-8 md:mb-12 py-6 md:py-8"
+        {/* TrustBar abaixo do título */}
+        <div 
+          className={`mb-8 md:mb-12 py-6 md:py-8 scroll-animate-fade-up ${isVisible ? 'is-visible' : ''}`}
+          style={{ animationDelay: '0.3s' }}
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {trustItems.map((item, index) => {
@@ -173,13 +166,10 @@ export default function SalesExpertise() {
               }
               
               return (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-center"
+                  className={`text-center scroll-animate-item ${isVisible ? 'is-visible' : ''}`}
+                  style={{ animationDelay: getStaggerDelay(index, 0.5, 0.15) }}
                 >
                   <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-1 sm:mb-2 min-h-[44px] sm:min-h-[60px] flex items-center justify-center">
                     {item.animate && number !== null ? (
@@ -191,32 +181,26 @@ export default function SalesExpertise() {
                   <div className="text-xs sm:text-sm text-gray-400 font-medium px-2">
                     {item.description}
                   </div>
-                </motion.div>
+                </div>
               )
             })}
           </div>
-        </motion.div>
+        </div>
 
         {/* Descrição após o TrustBar */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="text-center mb-12 md:mb-16"
+        <div 
+          className={`text-center mb-12 md:mb-16 scroll-animate-fade-up ${isVisible ? 'is-visible' : ''}`}
+          style={{ animationDelay: '0.8s' }}
         >
           <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
             Mais de <span className="text-white font-semibold">300 milhões em receita gerada</span> para diferentes negócios ao redor do mundo. Nosso time conversa em todas as etapas do seu projeto e garante métricas mais assertivas e uma metodologia comprovada que gera vendas diariamente para seu negócio com a alta lucratividade.
           </p>
-        </motion.div>
+        </div>
 
         {/* Slider de Benefícios */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="relative w-full"
+        <div 
+          className={`relative w-full scroll-animate-scale ${isVisible ? 'is-visible' : ''}`}
+          style={{ animationDelay: '1s' }}
         >
           <div className="relative w-full overflow-hidden">
             <div
@@ -268,39 +252,34 @@ export default function SalesExpertise() {
               />
             ))}
           </div>
-        </motion.div>
+        </div>
+      </div>
 
-        {/* Slider de logos das plataformas */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="mt-12 md:mt-16"
-        >
-          <div className="relative overflow-hidden w-full">
-            <div className="flex animate-scroll-infinite gap-8 md:gap-12" style={{ width: 'fit-content' }}>
-              {/* Duplicar logos para criar loop infinito */}
-              {[...platformLogos, ...platformLogos, ...platformLogos].map((logo, logoIndex) => (
-                <div
-                  key={`${logo.name}-${logoIndex}`}
-                  className="flex-shrink-0 flex items-center justify-center"
-                  style={{ width: '120px', height: '40px' }}
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={120}
-                    height={40}
-                    className="object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-                  />
-                </div>
-              ))}
-            </div>
+      {/* Slider de logos das plataformas */}
+      <div 
+        className={`mt-12 md:mt-16 -mx-4 sm:-mx-6 lg:-mx-8 scroll-animate-fade-up ${isVisible ? 'is-visible' : ''}`}
+        style={{ animationDelay: '1.2s' }}
+      >
+        <div className="relative overflow-hidden w-screen py-4">
+          <div className="flex animate-scroll-infinite gap-12 md:gap-16 lg:gap-20" style={{ width: 'fit-content' }}>
+            {[...platformLogos, ...platformLogos, ...platformLogos].map((logo, logoIndex) => (
+              <div
+                key={`${logo.name}-${logoIndex}`}
+                className="flex-shrink-0 flex items-center justify-center py-2"
+                style={{ width: '120px', height: '40px' }}
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={120}
+                  height={40}
+                  className="object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                />
+              </div>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
 }
-

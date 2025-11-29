@@ -187,7 +187,6 @@ export default function QuizPage() {
         return (
           <ChallengeStep
             desafios={quizData.desafios}
-            nicho={quizData.nicho}
             onNext={handleStep3Next}
             onBack={handleBack}
           />

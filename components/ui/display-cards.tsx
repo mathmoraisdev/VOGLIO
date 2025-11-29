@@ -12,6 +12,8 @@ interface DisplayCardProps {
   date?: string;
   iconClassName?: string;
   titleClassName?: string;
+  isVisible?: boolean;
+  animationDelay?: string;
 }
 
 function DisplayCard({
@@ -22,31 +24,45 @@ function DisplayCard({
   date = "Just now",
   iconClassName = "text-primary",
   titleClassName = "text-primary",
+  isVisible = true,
+  animationDelay = "0s",
 }: DisplayCardProps) {
   return (
     <div
       className={cn(
-        "flex flex-col h-full rounded-xl border-2 border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow",
+        "flex flex-col h-full rounded-xl border-2 border-gray-200 bg-white p-4 md:p-5 shadow-sm hover:shadow-md transition-shadow scroll-animate-card",
+        isVisible ? "is-visible" : "",
         className
       )}
+      style={{ animationDelay }}
     >
-      <div className="flex items-start gap-3 mb-4 min-h-[60px]">
+      <div className="flex items-center gap-3 mb-3 min-h-[50px]">
         <span className="inline-block rounded-full bg-primary/10 p-2 flex-shrink-0">
           {React.cloneElement(icon as React.ReactElement, { className: `size-5 ${iconClassName}` })}
         </span>
-        <h3 className={cn("text-lg font-bold leading-tight", titleClassName)}>{title}</h3>
+        <h3 className={cn("text-base md:text-lg font-bold leading-tight", titleClassName)}>{title}</h3>
       </div>
-      <p className="text-gray-600 leading-relaxed flex-grow">{description}</p>
-      {date && <p className="text-sm text-gray-400 mt-4">{date}</p>}
+      <p className="text-sm md:text-base text-gray-600 leading-relaxed flex-grow">{description}</p>
+      {date && <p className="text-sm text-gray-400 mt-3">{date}</p>}
     </div>
   );
 }
 
 interface DisplayCardsProps {
-  cards?: DisplayCardProps[];
+  cards?: Omit<DisplayCardProps, 'isVisible' | 'animationDelay'>[];
+  isVisible?: boolean;
+  baseDelay?: number;
+  staggerDelay?: number;
+  className?: string;
 }
 
-export default function DisplayCards({ cards }: DisplayCardsProps) {
+export default function DisplayCards({ 
+  cards, 
+  isVisible = true, 
+  baseDelay = 0.4, 
+  staggerDelay = 0.4,
+  className 
+}: DisplayCardsProps) {
   const defaultCards = [
     {
       icon: <Sparkles className="size-5 text-primary" />,
@@ -71,9 +87,14 @@ export default function DisplayCards({ cards }: DisplayCardsProps) {
   const displayCards = cards || defaultCards;
 
   return (
-    <div className="grid grid-cols-2 gap-4 md:gap-6 w-full items-stretch">
+    <div className={cn("grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 w-full items-stretch", className)}>
       {displayCards.map((cardProps, index) => (
-        <DisplayCard key={index} {...cardProps} />
+        <DisplayCard 
+          key={index} 
+          {...cardProps} 
+          isVisible={isVisible}
+          animationDelay={`${baseDelay + index * staggerDelay}s`}
+        />
       ))}
     </div>
   );

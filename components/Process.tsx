@@ -1,9 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { fadeInUp, staggerContainer } from '@/lib/animations'
+import { motion } from 'framer-motion'
 import { Target, FileText, Zap, Rocket, Check, Clock } from 'lucide-react'
+import { useScrollAnimation, getStaggerDelay } from '@/hooks/useScrollAnimation'
 
 const steps = [
   {
@@ -21,12 +21,11 @@ const steps = [
     description: 'Criamos roadmap detalhado: desenvolvimento do sistema, criação das landing pages, estruturação do funil e planejamento de tráfego.',
     duration: 'Semana 1-2',
     icon: FileText,
-    services: ['Roadmap do sistema', 'Wireframes das landing pages', 'Estrutura do funil', 'Planejamento de campanhas'],
+    services: ['Roadmap do sistema', 'Estrutura do funil', 'Planejamento de campanhas'],
     details: [
       'Briefing completo do projeto',
       'Definição de objetivos e KPIs',
       'Estruturação do funil',
-      'Wireframes e protótipos',
     ],
   },
   {
@@ -65,44 +64,41 @@ const steps = [
 
 export default function Process() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>()
 
   const toggleStep = (index: number) => {
     setOpenIndex(openIndex === index ? null : index)
   }
 
   return (
-    <section className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900/50">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <h2 className="text-[28px] font-bold mb-3 sm:mb-4 px-2">
+    <section 
+      ref={ref}
+      className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900/50"
+    >
+      <div className="max-w-6xl lg:max-w-4xl mx-auto">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 
+            className={`text-[20px] md:text-[28px] font-bold mb-3 sm:mb-4 px-2 scroll-animate-title ${isVisible ? 'is-visible' : ''}`}
+          >
             Como <span className="text-primary">Entregamos</span><br />Seus Serviços
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto px-2">
+          <p 
+            className={`text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto px-2 scroll-animate-fade-up ${isVisible ? 'is-visible' : ''}`}
+            style={{ animationDelay: '0.2s' }}
+          >
             Processo simples e transparente: do planejamento do sistema até o tráfego gerando vendas
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="space-y-6 md:space-y-8"
-        >
+        <div className="space-y-6 md:space-y-8">
           {steps.map((step, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={fadeInUp}
-              className="relative"
+              className={`relative scroll-animate-card ${isVisible ? 'is-visible' : ''}`}
+              style={{ animationDelay: `${0.5 + index * 1.2}s` }}
             >
-              <motion.div
-                className={`relative bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-2xl overflow-hidden transition-all duration-300 group ${
+              <div
+                className={`relative bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-2xl overflow-hidden transition-all duration-300 group lg:max-w-3xl lg:mx-auto ${
                   step.details ? 'cursor-pointer' : ''
                 } ${openIndex === index ? 'border-primary/50 shadow-lg shadow-primary/20' : 'hover:border-primary/30 hover:shadow-lg'}`}
               >
@@ -130,7 +126,7 @@ export default function Process() {
                   </motion.div>
                 )}
 
-                <motion.button
+                <button
                   onClick={() => step.details && toggleStep(index)}
                   disabled={!step.details}
                   className="w-full text-left"
@@ -150,7 +146,7 @@ export default function Process() {
                       <div className="flex-grow">
                         <div className="flex items-center gap-3 mb-3">
                           <step.icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
-                          <h3 className="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">
+                          <h3 className="text-xl sm:text-2xl lg:text-lg font-bold group-hover:text-primary transition-colors">
                             {step.title}
                           </h3>
                         </div>
@@ -204,23 +200,20 @@ export default function Process() {
                       </div>
                     </motion.div>
                   )}
-                </motion.button>
-              </motion.div>
+                </button>
+              </div>
 
               {/* Connecting Line */}
               {index < steps.length - 1 && (
                 <div className="hidden md:block absolute left-10 top-full w-0.5 h-8 bg-gradient-to-b from-primary/50 to-transparent" />
               )}
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-center mt-12 md:mt-16"
+        <div 
+          className={`text-center mt-12 md:mt-16 scroll-animate-scale ${isVisible ? 'is-visible' : ''}`}
+          style={{ animationDelay: '5.5s' }}
         >
           <div className="relative inline-block bg-primary/10 border border-primary/30 rounded-2xl px-6 sm:px-8 py-4 sm:py-6 text-center">
             <Clock className="absolute top-3 left-3 sm:top-4 sm:left-4 w-5 h-5 text-primary" strokeWidth={2} />
@@ -231,7 +224,7 @@ export default function Process() {
               <p className="text-sm text-gray-500">Com entregas semanais e total transparência</p>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -120,7 +120,7 @@ export default function Pricing() {
                 <div className="mb-2">
                   <span className="text-xs sm:text-sm text-gray-500">{pkg.price}</span>
                 </div>
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-2">
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-[32px] font-bold text-primary mb-2">
                   {pkg.amount}
                 </div>
                 {pkg.roi && (

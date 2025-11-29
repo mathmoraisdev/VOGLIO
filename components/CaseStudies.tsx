@@ -1,110 +1,175 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { fadeInUp, staggerContainer } from '@/lib/animations'
 import { Rocket, GraduationCap, ShoppingBag } from 'lucide-react'
+import { useScrollAnimation, getStaggerDelay } from '@/hooks/useScrollAnimation'
 
 const cases = [
   {
-    client: 'Tech Startup',
-    industry: 'SaaS',
-    challenge: 'Sem sistema de vendas estruturado',
-    result: 'R$ 2.5M em 6 meses',
-    metric: '+450%',
+    client: 'A LA GARÇONNE',
+    industry: 'E-Commerce',
+    challenge: 'O cliente contratou',
+    result: 'Consultoria, Desenvolvimento e Tráfego Pago',
+    metric: '6,3x',
     metricLabel: 'ROI',
-    time: '90 dias',
-    icon: Rocket,
-  },
-  {
-    client: 'Infoprodutos',
-    industry: 'Educação Online',
-    challenge: 'Landing pages com baixa conversão',
-    result: 'De 2% para 18% de conversão',
-    metric: '9x',
-    metricLabel: 'Mais Vendas',
     time: '45 dias',
-    icon: GraduationCap,
+    icon: Rocket,
+    backgroundImage: '/clientes/alagarc.png',
   },
   {
-    client: 'E-commerce',
-    industry: 'Moda',
-    challenge: 'Tráfego sem qualificação',
-    result: '15 mil leads qualificados/mês',
-    metric: '-65%',
-    metricLabel: 'CAC',
-    time: '60 dias',
+    client: 'N1 Global',
+    industry: 'SaaS',
+    challenge: 'O cliente contratou',
+    result: 'Site, Plataforma de Afiliados e Tráfego Pago',
+    metric: 'R$120 mil',
+    metricLabel: 'Assinaturas Recorrentes',
+    time: '30 dias',
+    icon: GraduationCap,
+    backgroundImage: '/clientes/n1.png',
+  },
+  {
+    client: 'SR Imobiliária',
+    industry: 'Negócio Local',
+    challenge: 'O cliente contratou',
+    result: 'Consultoria, Tráfego Pago e CRM',
+    metric: 'R$3 milhões',
+    metricLabel: 'Aumento de Vendas',
+    time: '30 dias',
     icon: ShoppingBag,
+    backgroundImage: '/clientes/sr.png',
+  },
+  {
+    client: '1º Oficio de Imóveis',
+    industry: 'Negócio Local',
+    challenge: 'O cliente contratou',
+    result: 'Automação de Atendimento',
+    metric: 'R$54 mil',
+    metricLabel: 'Economia Operacional',
+    time: '15 dias',
+    icon: ShoppingBag,
+    backgroundImage: '/clientes/cartorio.png',
+  },
+  {
+    client: 'Líder Hotel',
+    industry: 'Negócio Local',
+    challenge: 'O cliente contratou',
+    result: 'Tráfego Pago, Sistema Administrativo,\nAutomação de Processos',
+    metric: '3X',
+    metricLabel: 'Eficácia Operacional',
+    time: '45 dias',
+    icon: ShoppingBag,
+    backgroundImage: '/clientes/lider.png',
   },
 ]
 
 export default function CaseStudies() {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>()
+
   return (
-    <section className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/50 to-black">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+    <section 
+      ref={ref}
+      className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/50 to-black"
+    >
+      <div className="w-full">
+        <div className="text-center mb-12 md:mb-16 max-w-7xl mx-auto">
+          <h2 
+            className={`text-[20px] sm:text-4xl md:text-5xl lg:text-[32px] font-bold mb-4 scroll-animate-title ${isVisible ? 'is-visible' : ''}`}
+          >
             Cases de <span className="text-primary">Sucesso</span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
+          <p 
+            className={`text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto scroll-animate-fade-up ${isVisible ? 'is-visible' : ''}`}
+            style={{ animationDelay: '0.2s' }}
+          >
             Veja como transformamos ideias em negócios lucrativos
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
           {cases.map((caseItem, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={fadeInUp}
-              className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-2xl p-6 md:p-8 hover:border-primary/30 transition-all duration-300 group"
+              className={`bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-2xl hover:border-primary/30 transition-all duration-300 group relative overflow-hidden flex flex-col min-h-[400px] md:min-h-[450px] lg:h-[500px] scroll-animate-card ${isVisible ? 'is-visible' : ''}`}
+              style={{
+                ...(caseItem.backgroundImage ? {
+                  backgroundImage: `url(${caseItem.backgroundImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: index === 0 ? 'center' : 'left center',
+                } : {}),
+                animationDelay: getStaggerDelay(index, 0.4, 0.2),
+              }}
             >
-              <caseItem.icon className="w-10 h-10 text-primary mb-4" strokeWidth={1.5} />
-              
-              <div className="mb-4">
-                <h3 className="text-xl sm:text-2xl font-bold mb-1 group-hover:text-primary transition-colors">
-                  {caseItem.client}
-                </h3>
-                <p className="text-sm text-gray-500">{caseItem.industry}</p>
-              </div>
-
-              <div className="mb-6 pb-6 border-b border-gray-800">
-                <p className="text-sm text-gray-400 mb-2">Desafio:</p>
-                <p className="text-gray-300">{caseItem.challenge}</p>
-              </div>
-
-              <div className="mb-6">
-                <p className="text-sm text-gray-400 mb-2">Resultado:</p>
-                <p className="text-lg font-semibold text-white">{caseItem.result}</p>
-              </div>
-
-              <div className="flex items-center justify-between pt-4 border-t border-gray-800">
-                <div>
-                  <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
-                    {caseItem.metric}
+              {/* Overlay com gradiente */}
+              <div 
+                className="absolute inset-0 rounded-2xl"
+                style={{
+                  background: caseItem.backgroundImage 
+                    ? 'linear-gradient(to bottom, transparent 0%, transparent 10%, rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 1) 100%)'
+                    : 'linear-gradient(to bottom, transparent 0%, transparent 10%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.8) 100%)',
+                  zIndex: 1,
+                }}
+              />
+              <div className="relative z-10 flex-1 flex flex-col p-4 md:p-6">
+                {/* Espaço superior para posicionar títulos no desktop */}
+                <div className="hidden lg:block lg:h-[180px]">
+                  <div className="space-y-2">
+                    <div>
+                      <h3 className="text-lg md:text-xl font-bold group-hover:text-primary transition-colors text-white">
+                        {caseItem.client}
+                      </h3>
+                      <p className="text-xs text-gray-300">{caseItem.industry}</p>
+                    </div>
+                    {/* Conteúdo visível apenas no desktop */}
+                    <div className="pt-2 border-t border-white/10">
+                      <p className="text-xs text-gray-300 mb-1">{caseItem.challenge}</p>
+                      <p className="text-sm font-semibold text-white whitespace-pre-line">{caseItem.result}</p>
+                    </div>
                   </div>
-                  <div className="text-xs text-gray-500">{caseItem.metricLabel}</div>
                 </div>
-                <div className="text-right">
-                  <div className="text-sm font-semibold text-primary">{caseItem.time}</div>
-                  <div className="text-xs text-gray-500">Prazo</div>
+
+                {/* Espaço flexível - empurra conteúdo para baixo no mobile */}
+                <div className="flex-1 lg:min-h-0"></div>
+
+                {/* Título e conteúdo - na parte inferior no mobile */}
+                <div className="lg:hidden space-y-2">
+                  <div>
+                    <h3 className="text-lg md:text-xl font-bold group-hover:text-primary transition-colors text-white">
+                      {caseItem.client}
+                    </h3>
+                    <p className="text-xs text-gray-300">{caseItem.industry}</p>
+                  </div>
+                  <div className="pt-2 border-t border-white/10">
+                    <p className="text-xs text-gray-300 mb-1">{caseItem.challenge}</p>
+                    <p className="text-sm font-semibold text-white whitespace-pre-line">{caseItem.result}</p>
+                  </div>
+                </div>
+
+                {/* Métricas no final */}
+                <div className="flex items-center justify-between pt-2">
+                  <div>
+                    <div className="text-[18px] md:text-[22px] font-bold text-green-400">
+                      {caseItem.metric}
+                    </div>
+                    <div className="text-xs text-gray-300">
+                      {caseItem.metricLabel === 'Assinaturas Recorrentes' ? (
+                        <>
+                          <span className="lg:hidden">Assinaturas Recorrentes</span>
+                          <span className="hidden lg:inline">Assinaturas</span>
+                        </>
+                      ) : (
+                        caseItem.metricLabel
+                      )}
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-sm font-semibold text-primary">{caseItem.time}</div>
+                    <div className="text-xs text-gray-300">Entrega Inicial</div>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
 }
-

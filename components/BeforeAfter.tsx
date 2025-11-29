@@ -46,7 +46,7 @@ export default function BeforeAfter() {
           viewport={{ once: true, margin: '-100px' }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-[20px] sm:text-4xl md:text-5xl lg:text-[32px] font-bold mb-4">
             Veja a <span className="text-primary">Transformação</span> Real
           </h2>
           <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
@@ -87,7 +87,7 @@ export default function BeforeAfter() {
 
                 <div className="text-center">
                   <div className="text-[10px] text-gray-500 mb-1.5">DEPOIS</div>
-                  <div className="text-xl md:text-2xl font-bold text-green-400">{item.after}</div>
+                  <div className="text-[18px] md:text-[22px] font-bold text-green-400">{item.after}</div>
                 </div>
               </div>
 

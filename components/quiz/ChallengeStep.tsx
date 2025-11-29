@@ -4,8 +4,9 @@ import { useState, useMemo, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
 import Button from '@/components/ui/Button'
-import { NichoType } from '@/lib/quizLogic'
 import { CheckSquare2, Square } from 'lucide-react'
+
+type NichoType = 'trafego-puro' | 'desenvolvimento' | 'otimizacao' | 'integrado'
 
 interface ChallengeStepProps {
   desafios?: string[]
@@ -58,7 +59,7 @@ export default function ChallengeStep({ desafios = [], nicho, onNext, onBack }: 
         return desafiosIntegrado
       default:
         // Fallback: retorna todos os desafios únicos se nicho não estiver definido
-        return [...new Set([...desafiosTrafegoPuro, ...desafiosDesenvolvimento, ...desafiosOtimizacao, ...desafiosIntegrado])]
+        return Array.from(new Set([...desafiosTrafegoPuro, ...desafiosDesenvolvimento, ...desafiosOtimizacao, ...desafiosIntegrado]))
     }
   }, [nicho])
   

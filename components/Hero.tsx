@@ -140,18 +140,6 @@ export default function Hero() {
       </svg>
 
       {/* Corner elements */}
-      <div className="corner-element top-8 left-8" style={{ animationDelay: '4s' }}>
-        <div
-          className="absolute top-0 left-0 w-2 h-2 opacity-30"
-          style={{ background: colors[300] }}
-        ></div>
-      </div>
-      <div className="corner-element top-8 right-8" style={{ animationDelay: '4.2s' }}>
-        <div
-          className="absolute top-0 right-0 w-2 h-2 opacity-30"
-          style={{ background: colors[300] }}
-        ></div>
-      </div>
       <div className="corner-element bottom-8 left-8" style={{ animationDelay: '4.4s' }}>
         <div
           className="absolute bottom-0 left-0 w-2 h-2 opacity-30"
@@ -175,48 +163,45 @@ export default function Hero() {
         {/* Main headline */}
         <div className="text-center max-w-5xl mx-auto flex flex-col justify-center my-8 pt-[50px] md:pt-0">
           <h1
-            className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 md:mb-8"
+            className="text-[22px] md:text-5xl lg:text-[36px] font-bold leading-tight tracking-tight mb-6 md:mb-8"
             style={{ color: colors[50] }}
           >
-            <div className="mb-1 md:mb-2">
+            <div className="mb-1 md:mb-2 lg:mb-0">
               <span className="word" data-delay="1600" style={{ opacity: 0 }}>
                 A
               </span>{' '}
               <span className="word" data-delay="1750" style={{ opacity: 0 }}>
-                Única
+                Equipe
               </span>{' '}
               <span className="word" data-delay="1900" style={{ opacity: 0 }}>
-                Agência
-              </span>{' '}
-              <span className="word" data-delay="2050" style={{ opacity: 0 }}>
                 Que
               </span>{' '}
-              <span className="word" data-delay="2200" style={{ opacity: 0, color: colors[500] }}>
+              <span className="word" data-delay="2050" style={{ opacity: 0, color: colors[500] }}>
                 Cria
               </span>{' '}
-              <span className="word" data-delay="2350" style={{ opacity: 0, color: colors[500] }}>
+              <span className="word" data-delay="2200" style={{ opacity: 0, color: colors[500] }}>
                 E
               </span>{' '}
-              <span className="word" data-delay="2500" style={{ opacity: 0, color: colors[500] }}>
+              <span className="word" data-delay="2350" style={{ opacity: 0, color: colors[500] }}>
                 Divulga
               </span>
             </div>
-            <div className="font-bold leading-tight">
-              <span className="word" data-delay="2600" style={{ opacity: 0, color: colors[50] }}>
+            <div className="font-bold leading-tight lg:mt-1">
+              <span className="word" data-delay="2500" style={{ opacity: 0, color: colors[50] }}>
                 Seu
               </span>{' '}
-              <span className="word" data-delay="2750" style={{ opacity: 0, color: colors[50] }}>
+              <span className="word" data-delay="2650" style={{ opacity: 0, color: colors[50] }}>
                 Negócio
               </span>{' '}
-              <span className="word" data-delay="2900" style={{ opacity: 0, color: colors[50] }}>
+              <span className="word" data-delay="2800" style={{ opacity: 0, color: colors[50] }}>
                 Digital.
               </span>
-            </div>
-            <div className="font-bold leading-tight mt-1">
-              <span className="word" data-delay="3050" style={{ opacity: 0, color: colors[500] }}>
+              <br className="md:hidden" />
+              {' '}
+              <span className="word" data-delay="2950" style={{ opacity: 0, color: colors[500] }}>
                 Tudo
               </span>{' '}
-              <span className="word" data-delay="3200" style={{ opacity: 0, color: colors[500] }}>
+              <span className="word" data-delay="3100" style={{ opacity: 0, color: colors[500] }}>
                 Junto.
               </span>
             </div>
@@ -281,7 +266,7 @@ export default function Hero() {
             }}
           ></div>
           <h2
-            className="text-[15px] md:text-[17px] font-mono font-light uppercase tracking-[0.2em] opacity-80"
+            className="text-[11px] md:text-[13px] font-mono font-light uppercase tracking-[0.2em] opacity-80"
             style={{ color: colors[200] }}
           >
             <span className="word" data-delay="4400" style={{ opacity: 0 }}>
@@ -322,25 +307,6 @@ export default function Hero() {
           }}
         >
           <ProjectSlider />
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:block z-20"
-        style={{
-          animation: 'word-appear 1s ease-out forwards',
-          animationDelay: '6000ms',
-          opacity: 0,
-        }}
-      >
-        <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center">
-          <div
-            className="w-1 h-3 bg-gray-400 rounded-full mt-2"
-            style={{
-              animation: 'float 1.5s ease-in-out infinite',
-            }}
-          ></div>
         </div>
       </div>
 

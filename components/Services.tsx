@@ -1,8 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { staggerContainer, fadeInUp } from '@/lib/animations'
 import { Rocket, DollarSign, TrendingUp, Bot, Check, Zap } from 'lucide-react'
+import { useScrollAnimation, getStaggerDelay } from '@/hooks/useScrollAnimation'
 
 const services = [
   {
@@ -43,69 +42,63 @@ const services = [
 ]
 
 export default function Services() {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>()
+
   return (
-    <section id="services" className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-white" data-section-type="white">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <h2 className="text-[26px] font-bold mb-3 sm:mb-4 px-2 text-gray-900">
+    <section 
+      ref={ref}
+      id="services" 
+      className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-white" 
+      data-section-type="white"
+    >
+      <div className="w-full">
+        <div className="text-center mb-12 md:mb-16 max-w-7xl mx-auto">
+          <h2 
+            className={`text-[20px] md:text-[26px] font-bold mb-3 sm:mb-4 px-2 text-gray-900 scroll-animate-title ${isVisible ? 'is-visible' : ''}`}
+          >
             Nossos <span className="text-primary">Serviços Especializados</span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-2">
+          <p 
+            className={`text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-2 scroll-animate-fade-up ${isVisible ? 'is-visible' : ''}`}
+            style={{ animationDelay: '0.2s' }}
+          >
             Serviços pontuais ou pacote completo.<br />Escolha o que precisa ou peça tudo.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={fadeInUp}
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
-              className="h-full flex flex-col group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
+              className={`h-full flex flex-col group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-2 transition-all duration-300 scroll-animate-card ${isVisible ? 'is-visible' : ''}`}
+              style={{ animationDelay: `${0.5 + index * 1}s` }}
             >
-                <div className="flex items-center justify-between mb-3 sm:mb-4">
-                  <motion.div 
-                    whileHover={{ scale: 1.2, rotate: [0, -10, 10, -10, 0] }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <service.icon className="w-10 h-10 sm:w-12 sm:h-12 text-primary" strokeWidth={1.5} />
-                  </motion.div>
-                  <span className="text-xs sm:text-sm text-primary/70 font-semibold bg-primary/10 px-2 sm:px-3 py-1 rounded-lg border border-primary/20">
-                    {service.serviceType}
-                  </span>
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <div className="transition-transform duration-300 group-hover:scale-110">
+                  <service.icon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-8 lg:h-8 text-primary" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-gray-900 group-hover:text-primary transition-colors duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 flex-grow transition-colors duration-300">
-                  {service.description}
-                </p>
-                <div className="space-y-1.5 sm:space-y-2 pt-3 sm:pt-4 border-t border-gray-200">
-                  {service.benefits.map((benefit, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 transition-colors">
-                      <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" strokeWidth={2.5} />
-                      <span>{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
+                <span className="text-xs sm:text-sm text-primary/70 font-semibold bg-primary/10 px-2 sm:px-3 py-1 rounded-lg border border-primary/20">
+                  {service.serviceType}
+                </span>
+              </div>
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-[18px] font-semibold leading-none mb-2 sm:mb-3 text-gray-900 group-hover:text-primary transition-colors duration-300">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 flex-grow transition-colors duration-300">
+                {service.description}
+              </p>
+              <div className="space-y-1.5 sm:space-y-2 pt-3 sm:pt-4 border-t border-gray-200">
+                {service.benefits.map((benefit, idx) => (
+                  <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 transition-colors">
+                    <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" strokeWidth={2.5} />
+                    <span>{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
 }
-

@@ -53,7 +53,7 @@ export default function ContactForm() {
           viewport={{ once: true, margin: '-100px' }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-[20px] sm:text-4xl md:text-5xl lg:text-[32px] font-bold mb-4">
             Vamos Conversar Sobre Seu <span className="text-primary">Projeto</span>?
           </h2>
           <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">

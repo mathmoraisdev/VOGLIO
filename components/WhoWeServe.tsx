@@ -1,9 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
-import { fadeInUp } from '@/lib/animations'
 import { Building2, ShoppingBag, Rocket, Briefcase, Zap } from 'lucide-react'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 const clients = [
   {
@@ -25,22 +24,22 @@ const clients = [
     services: ['Criação & Manutenção', 'UX & Design', 'Mídia Paga'],
   },
   {
-    title: 'Serviços B2B',
-    description: 'Sistemas de gestão, automações de processos e landing pages que geram leads qualificados.',
+    title: 'Sistemas Empresariais',
+    description: 'Plataformas corporativas completas, automações inteligentes e integrações que otimizam operações e aumentam a produtividade.',
     icon: Briefcase,
-    services: ['Sistemas Web', 'Automações', 'Landing Pages'],
+    services: ['Sistemas Corporativos', 'Automações', 'Integrações'],
   },
   {
-    title: 'Startups',
-    description: 'MVP rápido, landing pages de validação e tráfego para testar e escalar seu produto.',
+    title: 'Projetos Inovadores',
+    description: 'Sistemas e aplicativos desenvolvidos do zero com metodologia completa. Do planejamento estratégico à estruturação para escala, tudo integrado para seu crescimento.',
     icon: Rocket,
-    services: ['Sistemas Web', 'Landing Pages', 'Tráfego Pago'],
+    services: ['Desenvolvimento Completo', 'Metodologia', 'Escala'],
   },
   {
-    title: 'Agências',
-    description: 'Sistemas white-label, automações de atendimento e ferramentas para escalar operações.',
+    title: 'Negócios Locais',
+    description: 'Sistemas de Gestão Completo, Automações de Processos, Posicionamento Digital, Tráfego Pago. Temos a solução completa para seu negócio físico.',
     icon: Building2,
-    services: ['Sistemas Web', 'Automações', 'Integrações'],
+    services: ['Desenvolvimento', 'Branding', 'Tráfego Pago'],
   },
 ]
 
@@ -48,6 +47,7 @@ export default function WhoWeServe() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>()
 
   useEffect(() => {
     if (!isPaused) {
@@ -72,25 +72,29 @@ export default function WhoWeServe() {
   const handleMouseLeave = () => setIsPaused(false)
 
   return (
-    <section className="relative py-20 md:py-32 bg-white" data-section-type="white">
+    <section 
+      ref={ref}
+      className="relative py-20 md:py-32 bg-white" 
+      data-section-type="white"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <h2 className="text-[26px] font-bold mb-3 sm:mb-4 px-2 text-gray-900">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 
+            className={`text-[26px] font-bold mb-3 sm:mb-4 px-2 text-gray-900 scroll-animate-title ${isVisible ? 'is-visible' : ''}`}
+          >
             <span className="text-primary">Quem</span> Atendemos
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-2">
+          <p 
+            className={`text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-2 scroll-animate-fade-up ${isVisible ? 'is-visible' : ''}`}
+            style={{ animationDelay: '0.2s' }}
+          >
             Soluções personalizadas para diferentes tipos de negócios
           </p>
-        </motion.div>
+        </div>
 
         <div
-          className="relative w-full overflow-hidden"
+          className={`relative w-full overflow-hidden scroll-animate-scale ${isVisible ? 'is-visible' : ''}`}
+          style={{ animationDelay: '0.4s' }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -104,11 +108,7 @@ export default function WhoWeServe() {
                 className="min-w-full flex-shrink-0 w-full"
               >
                 <div className="max-w-4xl mx-auto px-4 sm:px-6">
-                  <motion.div
-                    key={`card-${index}-${currentIndex}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
+                  <div
                     className="bg-white border border-gray-200 rounded-xl p-5 sm:p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300"
                   >
                     <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -132,7 +132,7 @@ export default function WhoWeServe() {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -162,4 +162,3 @@ export default function WhoWeServe() {
     </section>
   )
 }
-
