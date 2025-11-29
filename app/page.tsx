@@ -7,14 +7,10 @@ import About from '@/components/About'
 import SalesExpertise from '@/components/SalesExpertise'
 import Technologies from '@/components/Technologies'
 import CaseStudies from '@/components/CaseStudies'
-import BeforeAfter from '@/components/BeforeAfter'
 import Services from '@/components/Services'
-import Pricing from '@/components/Pricing'
+import WhoWeServe from '@/components/WhoWeServe'
 import Process from '@/components/Process'
 import Team from '@/components/Team'
-import NicheBenefits from '@/components/NicheBenefits'
-import Testimonials from '@/components/Testimonials'
-import FAQ from '@/components/FAQ'
 import Guarantee from '@/components/Guarantee'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
@@ -31,14 +27,10 @@ export default function Home() {
       <SalesExpertise />
       <Technologies />
       <CaseStudies />
-      <BeforeAfter />
       <Services />
-      <Pricing />
+      <WhoWeServe />
       <Process />
       <Team />
-      <NicheBenefits />
-      <Testimonials />
-      <FAQ />
       <Guarantee />
       <CTA />
       <Footer />

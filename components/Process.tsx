@@ -32,7 +32,7 @@ const steps = [
   {
     number: '03',
     title: 'Implementação Ágil',
-    description: 'Desenvolvimento do sistema, criação das landing pages, estruturação do funil e início da gestão de tráfego — tudo em paralelo.',
+    description: 'Desenvolvimento do sistema, criação das landing pages, estruturação do funil e início da gestão de tráfego tudo em paralelo.',
     duration: 'Semana 3-4 + Mês 2',
     icon: Zap,
     services: ['Desenvolvimento do sistema', 'Criação das landing pages', 'Estruturação do funil', 'Configuração de tráfego'],
@@ -49,7 +49,7 @@ const steps = [
   },
   {
     number: '04',
-    title: 'Lançamento & Escala',
+    title: 'Do Lançamento à Escala',
     description: 'Sistema no ar, funil funcionando, tráfego gerando leads qualificados e vendas acontecendo. Otimização contínua.',
     duration: 'Mês 3+',
     icon: Rocket,
@@ -226,7 +226,7 @@ export default function Process() {
             <Clock className="absolute top-3 left-3 sm:top-4 sm:left-4 w-5 h-5 text-primary" strokeWidth={2} />
             <div>
               <p className="text-base sm:text-lg text-gray-300 mb-2">
-                <span className="text-white font-semibold">Tempo médio:</span><br />60-90 dias do início ao lançamento
+                <span className="text-white font-semibold">Tempo médio:</span><br />30-90 dias do início ao lançamento
               </p>
               <p className="text-sm text-gray-500">Com entregas semanais e total transparência</p>
             </div>

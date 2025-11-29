@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { staggerContainer, fadeInUp } from '@/lib/animations'
-import { Rocket, DollarSign, TrendingUp, Bot, Check } from 'lucide-react'
+import { Rocket, DollarSign, TrendingUp, Bot, Check, Zap } from 'lucide-react'
 
 const services = [
   {
@@ -11,6 +11,13 @@ const services = [
     benefits: ['Tecnologia de ponta', 'Escalável desde o dia 1', 'Manutenção facilitada'],
     icon: Rocket,
     serviceType: 'Sistema Web',
+  },
+  {
+    title: 'Automações e Integrações',
+    description: 'Automação completa de processos, integrações entre sistemas e workflows inteligentes. Reduza trabalho manual e aumente a eficiência operacional.',
+    benefits: ['Processos automatizados', 'Integrações nativas', 'Workflows inteligentes'],
+    icon: Zap,
+    serviceType: 'Automações',
   },
   {
     title: 'Landing Pages de Alta Conversão',
@@ -59,7 +66,7 @@ export default function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         >
           {services.map((service, index) => (
             <motion.div

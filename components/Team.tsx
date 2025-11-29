@@ -6,29 +6,29 @@ import { Code, TrendingUp, Palette, Briefcase } from 'lucide-react'
 
 const teamMembers = [
   {
-    name: 'Equipe Voglio',
-    role: 'Desenvolvedores Full-Stack',
+    name: 'Processos definidos',
+    role: 'Consultores estratégicos que estruturam roadmaps validados e processos eficientes para acelerar a execução e garantir resultados do seu projeto.',
     experience: '5+ anos',
     expertise: 'React, Node.js, Python',
     icon: Code,
   },
   {
-    name: 'Equipe Voglio',
-    role: 'Especialistas em Marketing',
+    name: 'Desenvolvimento Robusto e Veloz',
+    role: 'Contamos com desenvolvedores e arquitetos que criam soluções de qualidade e alto desempenho para seu negócio.',
     experience: '8+ anos',
     expertise: 'Performance, Tráfego, Copywriting',
     icon: TrendingUp,
   },
   {
-    name: 'Equipe Voglio',
-    role: 'Designers UX/UI',
+    name: 'Tráfego Pago que Vende',
+    role: 'Equipe de especialistas em mídia paga que estruturam um processo eficiente de escala para seu negócio.',
     experience: '6+ anos',
     expertise: 'Design Systems, Conversão',
     icon: Palette,
   },
   {
-    name: 'Equipe Voglio',
-    role: 'Especialistas em Vendas',
+    name: 'Branding que Converte',
+    role: 'Designers experientes e editores profissionais que geram resultados para seu negócio.',
     experience: '10+ anos',
     expertise: 'Funis, Automações, CRM',
     icon: Briefcase,
@@ -65,35 +65,21 @@ export default function Team() {
             <motion.div
               key={index}
               variants={fadeInUp}
-              className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-2xl p-6 text-center hover:border-primary/30 transition-all duration-300 group"
+              className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 border border-gray-800/50 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 group"
             >
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <member.icon className="w-10 h-10 text-primary" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-1">{member.name}</h3>
-              <p className="text-sm text-primary mb-2">{member.role}</p>
-              <div className="space-y-1 text-xs text-gray-400">
-                <p>{member.experience} de experiência</p>
-                <p className="text-gray-500">{member.expertise}</p>
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <member.icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                </div>
+                <div className="flex-grow">
+                  <h3 className="text-lg font-bold text-white mb-2">{member.name}</h3>
+                  <p className="text-sm text-gray-300 leading-relaxed">{member.role}</p>
+                </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <div className="inline-block bg-primary/10 border border-primary/30 rounded-2xl px-6 sm:px-8 py-4 sm:py-6">
-            <p className="text-base sm:text-lg text-gray-300">
-              <span className="text-white font-semibold">+30 profissionais</span> trabalhando em cada projeto
-            </p>
-            <p className="text-sm text-gray-500 mt-2">Devs, designers, marketeiros e especialistas em vendas</p>
-          </div>
-        </motion.div>
       </div>
     </section>
   )
