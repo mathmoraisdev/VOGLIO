@@ -111,7 +111,7 @@ export default function ClientLogos() {
               <div className="glass-card-dot"></div>
               
               {/* Card principal */}
-              <div className="glass-card p-8 md:p-10 lg:p-6">
+              <div className="glass-card p-8 md:p-10 lg:p-8">
                 {/* Raio de luz */}
                 <div className="glass-card-ray"></div>
                 
@@ -122,12 +122,12 @@ export default function ClientLogos() {
                 <div className="glass-card-line rightl"></div>
                 
                 {/* Conteúdo */}
-                <div className="relative z-10 flex flex-col h-full justify-center items-center">
-                  <h3 className="text-xl md:text-2xl lg:text-lg font-bold text-center mb-8 md:mb-10 lg:mb-6 w-full text-gray-900">
+                <div className="relative z-10 flex flex-col min-h-full items-center">
+                  <h3 className="text-xl md:text-2xl lg:text-xl font-bold text-center mb-8 md:mb-10 lg:mb-8 w-full text-gray-900">
                     RESULTADO PARA VOCÊ:
                   </h3>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 lg:gap-4 w-full">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 lg:gap-5 w-full">
                     {results.map((item, index) => (
                       <div
                         key={index}
